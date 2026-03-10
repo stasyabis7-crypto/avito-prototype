@@ -131,9 +131,14 @@
       margin: 24px auto;
       padding: 0 56px;
     }
-    .hero {
+    .hero-outer {
+      position: relative;
       border-radius: 40px;
       overflow: hidden;
+    }
+    .hero {
+      border-radius: 40px;
+      overflow: visible;
       position: relative;
       background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
       display: flex;
@@ -144,21 +149,22 @@
     }
     .hero-img-left {
       position: absolute;
-      left: 0;
+      left: -2%;
       bottom: 0;
-      height: 100%;
-      width: 32%;
+      height: 110%;
+      width: 34%;
       object-fit: contain;
       object-position: left bottom;
       pointer-events: none;
       z-index: 1;
+      transform: scaleX(-1);
     }
     .hero-img-right {
       position: absolute;
-      right: 0;
+      right: -2%;
       bottom: 0;
-      height: 100%;
-      width: 32%;
+      height: 110%;
+      width: 34%;
       object-fit: contain;
       object-position: right bottom;
       pointer-events: none;
@@ -882,6 +888,7 @@
 <!-- HERO -->
 <section>
   <div class="hero-wrap">
+    <div class="hero-outer">
     <div class="hero">
       <img class="hero-img-left" src="https://www.figma.com/api/mcp/asset/e75fd4ca-1cb8-471f-b08f-7ea1974a2ba4" alt="" />
       <img class="hero-img-right" src="https://www.figma.com/api/mcp/asset/b54fa7a0-bf69-4b0b-a64a-09441f5f6df6" alt="" />
@@ -890,6 +897,7 @@
         <p class="hero-subtitle">Отдайте вещи людям, на благотворительность или на переработку — выберите удобный способ</p>
         <a href="#how-to-give" class="btn-primary">Выбрать способ передачи</a>
       </div>
+    </div>
     </div>
   </div>
 </section>

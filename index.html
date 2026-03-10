@@ -391,12 +391,41 @@
       height: 280px;
       overflow: hidden;
       margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
     }
-    .what-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    /* Карточка 1 — коробка с кепкой: центр снизу, 350x254px */
+    #what-img-0 {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 350px;
+      height: 254px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    /* Карточка 2 — футболка: центр снизу, 350x254px */
+    #what-img-1 {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 350px;
+      height: 254px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    /* Карточка 3 — пальто с кедами: центр снизу, 350x256px */
+    #what-img-2 {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 350px;
+      height: 256px;
+      object-fit: cover;
+      pointer-events: none;
+    }
     .what-card-title {
       font-size: 26px;
       font-weight: 800;
@@ -1045,21 +1074,21 @@
     <div class="what-cards">
       <div class="what-card">
         <div class="what-card-img">
-          <img src="https://www.figma.com/api/mcp/asset/c4102df6-78e3-47b8-a318-207248a588ee" alt="Вещи общего пользования" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>👕</div>'" />
+          <img id="what-img-0" src="https://www.figma.com/api/mcp/asset/cb13dd96-2efa-452c-b207-01c9e6d63a5d" alt="Вещи общего пользования" />
         </div>
         <div class="what-card-title">Вещи общего пользования</div>
         <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем состоянии</div>
       </div>
       <div class="what-card">
         <div class="what-card-img">
-          <img src="https://www.figma.com/api/mcp/asset/6b0ba87f-9913-4a78-85db-9ea743922173" alt="Качественные вещи" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>✨</div>'" />
+          <img id="what-img-1" src="https://www.figma.com/api/mcp/asset/5f465548-61d0-4996-913d-072a006218a6" alt="Качественные вещи" />
         </div>
         <div class="what-card-title">Качественные вещи</div>
         <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего использования</div>
       </div>
       <div class="what-card">
-        <div class="what-card-img" style="background:#f5f5f5;">
-          <img src="https://www.figma.com/api/mcp/asset/dc6faf4b-28c9-47d3-a7b4-222ed3b4f766" alt="Если вещь не подходит" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>♻️</div>'" />
+        <div class="what-card-img">
+          <img id="what-img-2" src="https://www.figma.com/api/mcp/asset/95f915da-f828-4585-8f3c-f73bbba762a0" alt="Если вещь не подходит" />
         </div>
         <div class="what-card-title">Если вещь не подходит</div>
         <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на переработку</div>

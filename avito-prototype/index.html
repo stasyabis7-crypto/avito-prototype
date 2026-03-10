@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Передавайте вещи с пользой — Авито</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font: 'Manrope', sans-serif;
+      --black: #141414;
+      --gray4: #f5f5f5;
+      --gray-bg: #f2f1f0;
+      --gray-text: #757575;
+      --white: #ffffff;
+      --blue: #00aaff;
+      --radius-28: 28px;
+      --radius-20: 20px;
+      --radius-16: 16px;
+      --shadow-card: 0px 1px 3px rgba(0,0,0,0.05), 0px 4px 24px rgba(0,0,0,0.12);
+      --shadow-btn: 0px 1px 3px rgba(0,0,0,0), 0px 4px 30px rgba(0,0,0,0);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--black);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      border-bottom: 1px solid #ececec;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-top {
+      background: #292929;
+      padding: 6px 0;
+    }
+    .header-top-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header-top-links {
+      display: flex;
+      gap: 20px;
+    }
+    .header-top-links a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      line-height: 18px;
+    }
+    .header-top-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-top-right a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .btn-place {
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .header-bottom {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--black);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .logo span { color: var(--blue); }
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .header-nav a {
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .header-nav a.active { border-bottom: 1px solid var(--black); }
+
+    /* LAYOUT */
+    .page-content {
+      max-width: 1328px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    /* HERO */
+    .hero-wrap {
+      max-width: 1328px;
+      margin: 24px auto;
+      padding: 0 56px;
+    }
+    .hero {
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 380px;
+    }
+    .hero-img-left {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 100%;
+      width: 32%;
+      object-fit: contain;
+      object-position: left bottom;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-img-right {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: 32%;
+      object-fit: contain;
+      object-position: right bottom;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+      padding: 80px 20px;
+    }
+    .hero-title {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--black);
+      margin-bottom: 32px;
+    }
+
+    /* BUTTONS */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      padding: 20px 21px;
+      border-radius: var(--radius-20);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-bg);
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 15px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-secondary:hover { opacity: 0.75; }
+    .btn-primary-sm {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--black);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 15px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-primary-sm:hover { opacity: 0.85; }
+
+    /* SECTIONS */
+    .section {
+      padding-top: 200px;
+    }
+    .section-title {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-title + .section-subtitle {
+      margin-top: -32px;
+    }
+    .section-subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+      text-align: center;
+      color: var(--black);
+      margin-bottom: 48px;
+    }
+
+    /* HOW TO GIVE — TABS */
+    .how-tabs {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+    .tabs-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .tab-item {
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+      width: 100%;
+    }
+    .tab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+    .tab-item + .tab-item .tab-header {
+      border-top: 1px solid #e8e8e8;
+    }
+    .tab-title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      color: var(--black);
+    }
+    .tab-arrow {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--black);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      margin-left: 16px;
+      line-height: 1;
+    }
+    .tab-item.active .tab-arrow { display: none; }
+    .tab-item.active .tab-header { padding-bottom: 0; }
+    .tab-content {
+      display: none;
+      padding: 4px 0 24px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+    .tab-item.active .tab-content { display: block; }
+    .tab-item.active .tab-title { color: var(--black); }
+    .tab-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      color: var(--black);
+      margin-top: 0;
+      margin-bottom: 16px;
+    }
+    .tab-btns {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* TAB IMAGE PANEL */
+    .tabs-image-panel {
+      flex: 1;
+      border-radius: var(--radius-28);
+      overflow: hidden;
+      min-height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* HOW IT WORKS */
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      background: #fff;
+      border-radius: var(--radius-28);
+      box-shadow: var(--shadow-card);
+      padding: 20px 24px 28px;
+    }
+    .step-icon {
+      width: 86px;
+      height: 86px;
+      margin-bottom: 16px;
+      object-fit: contain;
+    }
+    .step-title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      margin-bottom: 4px;
+    }
+    .step-desc {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
+      color: var(--black);
+    }
+
+    /* WHAT TO GIVE */
+    .what-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .what-card { background: #fff; }
+    .what-card-img {
+      background: var(--gray4);
+      border-radius: var(--radius-28);
+      height: 280px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .what-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .what-card-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 30px;
+      margin-bottom: 4px;
+    }
+    .what-card-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+
+    /* INFO BANNER */
+    .info-banner {
+      background: var(--gray4);
+      border-radius: var(--radius-28);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-banner-text { max-width: 620px; z-index: 1; }
+    .info-banner-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 30px;
+      margin-bottom: 8px;
+    }
+    .info-banner-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    .info-banner-deco {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 300px;
+      height: 234px;
+      pointer-events: none;
+    }
+
+    /* AFTER POSTING */
+    .after-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .after-card {
+      background: #fff;
+      border-radius: var(--radius-28);
+      box-shadow: var(--shadow-card);
+      padding: 20px 24px 28px;
+      overflow: hidden;
+    }
+    .after-card-icon-wrap {
+      width: 120px;
+      height: 120px;
+      position: relative;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .after-card-icon {
+      width: 191px;
+      height: 191px;
+      position: absolute;
+      left: -36px;
+      top: -35px;
+      object-fit: contain;
+    }
+    .after-card-title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      margin-bottom: 4px;
+    }
+    .after-card-desc {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
+      margin-bottom: 16px;
+    }
+
+    /* CAMPAIGNS */
+    .campaign-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .campaign-card {
+      cursor: pointer;
+      border-radius: var(--radius-28);
+      overflow: hidden;
+      background: #fff;
+      transition: transform 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .campaign-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .campaign-card-img {
+      height: 280px;
+      border-radius: var(--radius-28);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .campaign-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .campaign-img-1 { background: linear-gradient(90deg, #e3f7ff 10%, #f4eefe 90%); }
+    .campaign-img-2 { background: linear-gradient(90deg, #f4eefe 10%, #e2ffd6 90%); }
+    .campaign-fund-logos {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: -8px;
+    }
+    .fund-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--black);
+      overflow: hidden;
+    }
+    .fund-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+    .campaign-card-content { padding: 0 0 8px; }
+    .campaign-title {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 30px;
+      margin-bottom: 4px;
+    }
+    .campaign-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+
+    /* FAQ */
+    .faq-layout {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .faq-list {
+      flex: 1;
+    }
+    .faq-item {
+      background: var(--gray-bg);
+      border-radius: var(--radius-28);
+      overflow: hidden;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+    .faq-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px 28px;
+    }
+    .faq-item.open .faq-header { padding-bottom: 8px; }
+    .faq-question {
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 26px;
+      flex: 1;
+      text-align: left;
+    }
+    .faq-chevron {
+      font-size: 18px;
+      color: #999;
+      margin-top: 4px;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--black); }
+    .faq-answer {
+      display: none;
+      padding: 0 24px 24px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    .faq-aside {
+      width: 424px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .faq-banner {
+      background: var(--gray-bg);
+      border-radius: var(--radius-28);
+      padding: 20px 24px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-banner-gradient { background: linear-gradient(90deg, #ffebec 10%, #f4eefe 90%); }
+    .faq-banner-title {
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 26px;
+      margin-bottom: 6px;
+    }
+    .faq-banner-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      margin-bottom: 16px;
+    }
+    .faq-banner-kitty {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 146px;
+      height: 114px;
+      object-fit: contain;
+    }
+    .share-btns { display: flex; gap: 6px; }
+    .share-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .share-btn:hover { opacity: 0.75; }
+
+    /* FOOTER */
+    .footer {
+      background: var(--gray-bg);
+      margin-top: 96px;
+      padding: 40px 92px;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: var(--gray-text);
+      line-height: 18px;
+      margin-bottom: 16px;
+    }
+    .footer-socials { display: flex; gap: 12px; }
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* ===================== MOBILE ===================== */
+    @media (max-width: 767px) {
+      .header-top { display: none; }
+      .header-bottom {
+        padding: 12px 16px;
+        gap: 12px;
+      }
+      .header-nav { display: none; }
+
+      .hero-wrap {
+        padding: 0 16px;
+        margin: 12px auto;
+      }
+      .hero {
+        border-radius: 24px;
+        min-height: 220px;
+      }
+      .hero-img-left, .hero-img-right {
+        max-width: 160px;
+      }
+      .hero-content {
+        padding: 40px 20px;
+      }
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 15px; }
+      .btn-primary { font-size: 16px; padding: 16px 20px; }
+
+      .page-content { padding: 0 16px; }
+
+      .section { padding-top: 56px; }
+      .section-title { font-size: 28px; margin-bottom: 32px; }
+      .section-title + .section-subtitle { margin-top: -16px; }
+      .section-subtitle { font-size: 15px; margin-bottom: 32px; }
+
+      .how-tabs { flex-direction: column; gap: 0; }
+      .tabs-image-panel { display: none; }
+      .tab-title { font-size: 18px; }
+      .tab-header { padding: 16px 0; }
+
+      .cards-grid-3, .what-cards, .after-cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .step-card { padding: 16px 20px 24px; }
+      .step-title { font-size: 18px; }
+      .step-desc { font-size: 15px; }
+
+      .what-card-img { height: 220px; }
+      .what-card-title { font-size: 20px; }
+
+      .info-banner { padding: 24px 20px; flex-direction: column; }
+      .info-banner-deco { display: none; }
+      .info-banner-title { font-size: 20px; }
+
+      .after-card { padding: 16px 20px 24px; }
+      .after-card-title { font-size: 18px; }
+      .after-card-desc { font-size: 15px; }
+
+      .campaign-cards { grid-template-columns: 1fr; }
+      .campaign-card-img { height: 220px; }
+      .campaign-title { font-size: 20px; }
+
+      .faq-layout { flex-direction: column; }
+      .faq-aside { width: 100%; }
+      .faq-question { font-size: 17px; }
+
+      .footer { padding: 32px 16px; margin-top: 56px; }
+    }
+
+    /* Placeholder illustrations using CSS */
+    .illo-yapomogayu {
+      background: linear-gradient(135deg, #e3f7ff, #c8e8ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+      color: #0099cc;
+      padding: 40px;
+    }
+    .illo-punkt {
+      background: linear-gradient(135deg, #f4eefe, #e3d4fc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .illo-vivoz {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .illo-recycle {
+      background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+
+    /* Hero image placeholder */
+    /* Campaign page iframe */
+    .section-header-with-subtitle {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    /* Tab panel images */
+    .tab-panel-img {
+      width: 100%;
+      height: 100%;
+      min-height: 450px;
+      border-radius: var(--radius-28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .tab-panel-img .tab-illo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: auto;
+      max-width: 80%;
+      height: 72%;
+      object-fit: contain;
+      object-position: bottom center;
+      pointer-events: none;
+    }
+    #tab-img-1 {
+      overflow: visible;
+    }
+    #tab-img-1 .tab-illo {
+      width: 95%;
+      height: auto;
+      max-width: 95%;
+    }
+    /* Tab 2: exact Figma proportions — 496x426 in 656x359 container, bottom: -53px */
+    .tab-illo-punkt {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -14.8%;
+      width: 75.6%;
+      height: auto;
+      pointer-events: none;
+    }
+    .illo-yapomogayu {
+      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
+    }
+    .illo-punkt {
+      background: linear-gradient(90deg, #FFEBEC 0%, #F4EEFE 100%);
+    }
+    .illo-vivoz {
+      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
+    }
+    .illo-recycle {
+      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="header-top-inner">
+      <div class="header-top-links">
+        <a href="#">Для бизнеса</a>
+        <a href="#">Карьера в Авито</a>
+        <a href="#">Помощь</a>
+        <a href="#">Каталоги</a>
+        <a href="#">#яПомогаю</a>
+      </div>
+      <div class="header-top-right">
+        <a href="#">Мои объявления</a>
+        <a href="#" class="btn-place">Разместить объявление</a>
+      </div>
+    </div>
+  </div>
+  <div class="header-bottom" style="max-width:1260px;margin:0 auto;">
+    <a href="index.html" class="logo"><span>●</span> Avito</a>
+    <nav class="header-nav">
+      <a href="#">#яПомогаю</a>
+      <a href="#">Благотворительность</a>
+      <a href="#">Кризисная помощь</a>
+      <a href="#" class="active">Экология</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section>
+  <div class="hero-wrap">
+    <div class="hero">
+      <img class="hero-img-left" src="public/images/hero-left.png" alt="" />
+      <img class="hero-img-right" src="public/images/hero-right.png" alt="" />
+      <div class="hero-content">
+        <h1 class="hero-title">Передавайте вещи<br>с пользой</h1>
+        <p class="hero-subtitle">Отдайте вещи людям, на благотворительность или на переработку — выберите удобный способ</p>
+        <a href="#how-to-give" class="btn-primary">Выбрать способ передачи</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO GIVE -->
+<section id="how-to-give" class="section">
+  <div class="page-content">
+    <h2 class="section-title">Как передать вещи</h2>
+    <p class="section-subtitle">Выберите удобный сценарий: разместить объявление,<br>отнести вещи самому или заказать вывоз вещей прямо из дома</p>
+
+    <div class="how-tabs">
+      <!-- TABS LIST -->
+      <div class="tabs-list">
+        <!-- Tab 1: Через #ЯПомогаю -->
+        <div class="tab-item active" onclick="switchTab(0)">
+          <div class="tab-header">
+            <span class="tab-title">Через #ЯПомогаю</span>
+            <span class="tab-arrow">+</span>
+          </div>
+          <div class="tab-content">
+            <p class="tab-desc">Разместите объявление, и его увидят организации и люди, которым нужна помощь</p>
+            <div class="tab-btns">
+              <a href="#" class="btn-primary-sm">Создать объявление</a>
+              <a href="#how-it-works" class="btn-secondary">Как это работает</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Отнести в пункт -->
+        <div class="tab-item" onclick="switchTab(1)">
+          <div class="tab-header">
+            <span class="tab-title">Отнести в пункт приёма вещей</span>
+            <span class="tab-arrow">+</span>
+          </div>
+          <div class="tab-content">
+            <p class="tab-desc">Найдите ближайший пункт приёма вещей и передайте их лично</p>
+            <div class="tab-btns">
+              <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-secondary">Открыть карту</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Заказать вывоз -->
+        <div class="tab-item" onclick="switchTab(2)">
+          <div class="tab-header">
+            <span class="tab-title">Заказать вывоз на дом</span>
+            <span class="tab-arrow">+</span>
+          </div>
+          <div class="tab-content">
+            <p class="tab-desc">Оставьте заявку, и партнёры заберут вещи прямо из вашего дома</p>
+            <div class="tab-btns">
+              <a href="https://www.avito.ru/avito-care/donate-things?from=/avito-care/lizaalert" target="_blank" class="btn-primary-sm">Оставить заявку</a>
+              <a href="https://www.avito.ru/avito-care/donate-things?from=/avito-care/lizaalert#:~:text=%D0%97%D0%B0%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D1%8B%D0%B2%D0%BE%D0%B7%20%D0%B2%D0%B5%D1%89%D0%B5%D0%B9" target="_blank" class="btn-secondary">Партнеры</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: Сдать на переработку -->
+        <div class="tab-item" onclick="switchTab(3)">
+          <div class="tab-header">
+            <span class="tab-title">Сдать на переработку</span>
+            <span class="tab-arrow">+</span>
+          </div>
+          <div class="tab-content">
+            <p class="tab-desc">Передайте вещи, не подходящие для повторного использования, на переработку</p>
+            <div class="tab-btns">
+              <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-secondary">Найти пункт</a>
+              <a href="#what-to-give" class="btn-secondary">Узнать что принимают</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL IMAGE -->
+      <div class="tabs-image-panel" id="tab-image-panel">
+        <div class="tab-panel-img illo-yapomogayu" id="tab-img-0">
+          <img class="tab-illo" src="https://www.figma.com/api/mcp/asset/c1cb141b-a4c7-4a97-b2fb-38998543a22b" alt="#яПомогаю" />
+        </div>
+        <div class="tab-panel-img illo-punkt" id="tab-img-1" style="display:none;">
+          <img class="tab-illo-punkt" src="https://www.figma.com/api/mcp/asset/df665aac-cf6f-4a8d-9628-1dcfe07c192a" alt="" />
+        </div>
+        <div class="tab-panel-img illo-vivoz" id="tab-img-2" style="display:none;">
+        </div>
+        <div class="tab-panel-img illo-recycle" id="tab-img-3" style="display:none;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section">
+  <div class="page-content">
+    <h2 class="section-title">Как это работает</h2>
+    <div class="cards-grid-3">
+      <div class="step-card">
+        <img class="step-icon" src="https://www.figma.com/api/mcp/asset/a14a52bd-c23e-49b2-8646-60858148820c" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23e3f7ff%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>📋</text></svg>'" />
+        <div class="step-title">Выберите способ передачи</div>
+        <div class="step-desc">Через объявление #яПомогаю, пункт приёма или вывоз вещей</div>
+      </div>
+      <div class="step-card">
+        <img class="step-icon" src="https://www.figma.com/api/mcp/asset/0653ab48-03fb-435a-8194-0443e79c2778" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23c8e6c9%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>🛒</text></svg>'" />
+        <div class="step-title">Передайте вещи</div>
+        <div class="step-desc">Разместите объявление или передайте вещи через сервис</div>
+      </div>
+      <div class="step-card">
+        <img class="step-icon" src="https://www.figma.com/api/mcp/asset/730f7896-37cc-4381-9c42-41c436996a1f" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23f4eefe%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>✅</text></svg>'" />
+        <div class="step-title">Мы найдём получателя</div>
+        <div class="step-desc">Вещи передаются людям или благотворительным организациям</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO GIVE -->
+<section id="what-to-give" class="section">
+  <div class="page-content">
+    <h2 class="section-title">Что можно передать</h2>
+    <div class="what-cards">
+      <div class="what-card">
+        <div class="what-card-img">
+          <img src="https://www.figma.com/api/mcp/asset/c4102df6-78e3-47b8-a318-207248a588ee" alt="Вещи общего пользования" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>👕</div>'" />
+        </div>
+        <div class="what-card-title">Вещи общего пользования</div>
+        <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем состоянии</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-img">
+          <img src="https://www.figma.com/api/mcp/asset/6b0ba87f-9913-4a78-85db-9ea743922173" alt="Качественные вещи" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>✨</div>'" />
+        </div>
+        <div class="what-card-title">Качественные вещи</div>
+        <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего использования</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-img" style="background:#f5f5f5;">
+          <img src="https://www.figma.com/api/mcp/asset/dc6faf4b-28c9-47d3-a7b4-222ed3b4f766" alt="Если вещь не подходит" onerror="this.parentNode.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;\'>♻️</div>'" />
+        </div>
+        <div class="what-card-title">Если вещь не подходит</div>
+        <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на переработку</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary">Найти пункт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BANNER -->
+<section class="section">
+  <div class="page-content">
+    <div class="info-banner">
+      <div class="info-banner-text">
+        <div class="info-banner-title">Объявление не будет видно в поиске</div>
+        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена помощь.</div>
+        <a href="#" class="btn-primary-sm">Создать объявление</a>
+      </div>
+      <div class="info-banner-deco">
+        <img src="https://www.figma.com/api/mcp/asset/604baa62-7c60-41c1-9e00-1b3852450869" alt="" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER POSTING -->
+<section class="section">
+  <div class="page-content">
+    <h2 class="section-title">Что происходит<br>после размещения</h2>
+    <div class="after-cards">
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img class="after-card-icon" src="https://www.figma.com/api/mcp/asset/27f9dc8f-8a3c-4b3c-a1eb-c299a3a83557" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23e8f5e9%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>📬</text></svg>'" />
+        </div>
+        <div class="after-card-title">Организации могут ответить не сразу</div>
+        <div class="after-card-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и откликнулись</div>
+      </div>
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img class="after-card-icon" src="https://www.figma.com/api/mcp/asset/d3bc5df5-8bc1-4631-b0f9-594eaad3f054" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23f3e5f5%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>💬</text></svg>'" />
+        </div>
+        <div class="after-card-title">Если вам пишут не только фонды</div>
+        <div class="after-card-desc">Вы сами решаете, кому передать вещь. Выбирайте того, кому доверяете и кому она принесёт больше пользы</div>
+      </div>
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img class="after-card-icon" src="https://www.figma.com/api/mcp/asset/8222f4bb-5f50-4eb3-86ff-ec249c8d117b" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23e3f2fd%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>🔍</text></svg>'" />
+        </div>
+        <div class="after-card-title">Если пока никто<br>не откликнулся</div>
+        <div class="after-card-desc">Такое тоже бывает. В этом случае вы всегда можете передать вещь другим удобным для вас способом</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary" style="margin-top:8px;">Найти пункт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGNS -->
+<section class="section">
+  <div class="page-content">
+    <div class="section-header-with-subtitle">
+      <h2 class="section-title">Активные акции</h2>
+      <p class="section-subtitle">Если сейчас идёт тематическая акция, вы можете сразу<br>передать нужные вещи по её правилам</p>
+    </div>
+    <div class="campaign-cards">
+      <!-- Campaign 1: Помощь семьям -->
+      <a href="campaign.html" class="campaign-card">
+        <div class="campaign-card-img campaign-img-1">
+          <img src="https://www.figma.com/api/mcp/asset/3d3536f3-d60b-48b1-8bde-1ce018ebab82" alt="Помощь семьям" onerror="this.parentNode.style.fontSize='80px';this.parentNode.innerHTML+='👟';this.remove()" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="campaign-fund-logos">
+            <div class="fund-logo">
+              <img src="https://www.figma.com/api/mcp/asset/945a1cac-d19b-456d-b76b-53f4d2b7a1f9" alt="ЦППЛ" onerror="this.parentNode.textContent='ЦППЛ'" />
+            </div>
+          </div>
+        </div>
+        <div class="campaign-card-content">
+          <div class="campaign-title">Помощь семьям</div>
+          <div class="campaign-desc">Одежда, обувь и детские вещи для срочной поддержки</div>
+          <a href="campaign.html" class="btn-primary-sm" onclick="event.stopPropagation()">Передать вещи</a>
+        </div>
+      </a>
+
+      <!-- Campaign 2: Книги и техника -->
+      <a href="campaign.html" class="campaign-card">
+        <div class="campaign-card-img campaign-img-2">
+          <img src="https://www.figma.com/api/mcp/asset/a5b5a752-e4e1-4a2b-b590-6adf150289d9" alt="Книги и техника" onerror="this.parentNode.style.fontSize='80px';this.parentNode.innerHTML+='📚';this.remove()" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="campaign-fund-logos" style="gap:0;">
+            <div class="fund-logo" style="z-index:3;position:relative;">
+              <img src="https://www.figma.com/api/mcp/asset/f474cbee-958a-4b70-817e-9f5f5120f9cb" alt="" onerror="this.parentNode.textContent='Ф1'" />
+            </div>
+            <div class="fund-logo" style="z-index:2;position:relative;margin-left:-8px;">
+              <img src="https://www.figma.com/api/mcp/asset/1e04029a-9996-4fb4-bb69-a6249c956f4f" alt="" onerror="this.parentNode.textContent='Ф2'" />
+            </div>
+            <div class="fund-logo" style="z-index:1;position:relative;margin-left:-8px;">
+              <img src="https://www.figma.com/api/mcp/asset/dee64f65-8e86-4f20-9c21-73f57b8eed44" alt="" onerror="this.parentNode.textContent='Ф3'" />
+            </div>
+          </div>
+        </div>
+        <div class="campaign-card-content">
+          <div class="campaign-title">Книги и техника</div>
+          <div class="campaign-desc">Подборка акций для вещей, которые чаще всего нужны фондам и партнёрам</div>
+          <a href="campaign.html" class="btn-primary-sm" onclick="event.stopPropagation()">Передать вещи</a>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="page-content">
+    <h2 class="section-title" style="text-align:left;">Вопросы и ответы</h2>
+    <div class="faq-layout">
+      <!-- FAQ list -->
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">
+            <span class="faq-question">Что лучше выбрать: #яПомогаю, карту или вывоз?</span>
+            <span class="faq-chevron">⌄</span>
+          </div>
+          <div class="faq-answer">Это зависит от вашей ситуации. #яПомогаю подойдёт, если вы хотите разместить объявление и дождаться отклика от организаций. Карта — если удобнее отнести вещи самостоятельно. Вывоз — если нет возможности выходить из дома.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">
+            <span class="faq-question">Почему объявление не видно в обычном поиске?</span>
+            <span class="faq-chevron">⌄</span>
+          </div>
+          <div class="faq-answer">Объявления с хештегом #яПомогаю скрыты от обычного поиска, чтобы защитить их от нецелевых обращений. Их видят только проверенные организации и люди, которым действительно нужна помощь.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">
+            <span class="faq-question">Что делать, если никто не пишет?</span>
+            <span class="faq-chevron">⌄</span>
+          </div>
+          <div class="faq-answer">Подождите несколько дней — иногда организациям нужно время. Если ответов нет, попробуйте другой способ передачи: отнести в пункт приёма или сдать на переработку.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">
+            <span class="faq-question">Какие вещи можно передавать?</span>
+            <span class="faq-chevron">⌄</span>
+          </div>
+          <div class="faq-answer">Одежду, обувь, книги, игрушки, бытовую технику и другие предметы в хорошем состоянии. Вещи должны быть чистыми и пригодными для дальнейшего использования.</div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">
+            <span class="faq-question">Куда потом попадают вещи?</span>
+            <span class="faq-chevron">⌄</span>
+          </div>
+          <div class="faq-answer">Вещи передаются благотворительным организациям, малообеспеченным семьям или людям, оказавшимся в трудной жизненной ситуации. Часть вещей, не подходящих для повторного использования, отправляется на переработку.</div>
+        </div>
+      </div>
+
+      <!-- FAQ aside -->
+      <div class="faq-aside">
+        <div class="faq-banner faq-banner-gradient">
+          <div class="faq-banner-title">Остались вопросы?</div>
+          <div class="faq-banner-desc">Напишите нам, если что‑то непонятно или у вас есть предложения.</div>
+          <button class="btn-secondary" style="background:#fff;">Написать на почту</button>
+          <img class="faq-banner-kitty" src="https://www.figma.com/api/mcp/asset/12a3d6fc-d209-400b-bb7f-ff1cc93bcd7c" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="faq-banner">
+          <div class="faq-banner-title">Расскажите друзьям</div>
+          <div class="faq-banner-desc">Помогать можно не только материально. Поделитесь ссылкой в соцсетях и мессенджерах.</div>
+          <div class="share-btns">
+            <button class="share-btn" title="Telegram">TG</button>
+            <button class="share-btn" title="ВКонтакте">VK</button>
+            <button class="share-btn" title="Скопировать ссылку">🔗</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="#">Помощь</a>
+    <a href="#">Безопасность</a>
+    <a href="#">Реклама на сайте</a>
+    <a href="#">О компании</a>
+    <a href="#">Вакансии</a>
+    <a href="#">Авито Журнал</a>
+    <a href="#">Блог</a>
+    <a href="#">Польза</a>
+    <a href="#">Приложение</a>
+  </div>
+  <div class="footer-copy">Авито — сайт объявлений России. © ООО «КЕХ еКоммерц», 2007—2025. Правила Авито.<br>Политика обработки данных. Оплачивая услуги на Авито, вы принимаете оферту.</div>
+  <div class="footer-socials">
+    <a href="#" class="social-btn">VK</a>
+    <a href="#" class="social-btn">R</a>
+    <a href="#" class="social-btn">OK</a>
+    <a href="#" class="social-btn">TG</a>
+    <a href="#" class="social-btn">YT</a>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  const tabItems = document.querySelectorAll('.tab-item');
+  const tabImgs = document.querySelectorAll('[id^="tab-img-"]');
+
+  function switchTab(index) {
+    tabItems.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+    tabImgs.forEach((img, i) => {
+      img.style.display = i === index ? 'flex' : 'none';
+    });
+  }
+
+  // Prevent double-click issues
+  tabItems.forEach((item, i) => {
+    item.addEventListener('click', (e) => {
+      // Don't trigger if clicking a link inside
+      if (e.target.closest('a')) return;
+      switchTab(i);
+    });
+  });
+
+  // FAQ accordion
+  function toggleFaq(item) {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Fix image load: if Figma asset fails, use emoji fallback
+  document.querySelectorAll('.tab-panel-img img').forEach(img => {
+    img.addEventListener('load', function() {
+      const textEl = document.getElementById('tab-img-0-text');
+      if (textEl && this.src.includes('43928390')) textEl.style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>

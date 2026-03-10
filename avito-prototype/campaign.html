@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Передача вещей для акции «Помощь семьям» — Авито</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font: 'Manrope', sans-serif;
+      --black: #141414;
+      --gray4: #f5f5f5;
+      --gray-bg: #f2f1f0;
+      --gray-text: #757575;
+      --white: #ffffff;
+      --blue: #00aaff;
+      --radius-28: 28px;
+      --radius-24: 24px;
+      --radius-16: 16px;
+      --shadow-card: 0px 1px 3px rgba(0,0,0,0.04), 0px 4px 28px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--black);
+      background: var(--gray4);
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      background: #fff;
+      border-bottom: 1px solid #ececec;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-top {
+      background: #292929;
+      padding: 6px 0;
+    }
+    .header-top-inner {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header-top-links { display: flex; gap: 20px; }
+    .header-top-links a {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .header-top-right { display: flex; align-items: center; gap: 16px; }
+    .header-top-right a { color: #fff; font-size: 14px; font-weight: 500; text-decoration: none; }
+    .btn-place {
+      background: var(--blue);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+    .header-bottom {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo { font-size: 22px; font-weight: 800; color: var(--black); text-decoration: none; flex-shrink: 0; }
+    .logo span { color: var(--blue); }
+    .header-nav { display: flex; gap: 20px; align-items: center; }
+    .header-nav a { color: var(--black); font-size: 15px; font-weight: 500; text-decoration: none; white-space: nowrap; }
+    .header-nav a.active { border-bottom: 1px solid var(--black); }
+
+    /* MAIN LAYOUT */
+    .campaign-page {
+      max-width: 654px;
+      margin: 0 auto;
+      padding: 0 12px 120px;
+    }
+
+    /* PAGE TITLE */
+    .page-title-block {
+      padding: 32px 24px 12px;
+    }
+    .page-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 36px;
+      color: var(--black);
+    }
+
+    /* CARDS */
+    .campaign-card {
+      background: #fff;
+      border-radius: var(--radius-24);
+      padding: 24px;
+      margin-bottom: 12px;
+    }
+    .campaign-card-title {
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 26px;
+      margin-bottom: 4px;
+    }
+    .campaign-card-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    /* FORM FIELD */
+    .field-label {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 20px;
+      margin-bottom: 12px;
+    }
+    .field-input {
+      background: var(--gray-bg);
+      border-radius: var(--radius-16);
+      padding: 15px 18px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--gray-text);
+      width: 100%;
+      margin-bottom: 6px;
+    }
+    .btn-add {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-bg);
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 15px 18px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    /* LIST SECTIONS */
+    .list-section-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 22px;
+      margin: 16px 0 4px;
+    }
+    .list-section-title:first-of-type { margin-top: 0; }
+
+    .item-list {
+      list-style: disc;
+      padding-left: 22px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      margin-top: 4px;
+    }
+    .item-list li { margin-bottom: 0; }
+
+    /* BOTTOM ACTION BAR */
+    .action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.04), 0px 4px 28px rgba(0,0,0,0.08);
+      border-radius: 24px 24px 0 0;
+      z-index: 50;
+    }
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-bg);
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 15px 18px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: 120px;
+    }
+    .action-bar-btns {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .btn-create {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-bg);
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 15px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+    .btn-create:hover { opacity: 0.75; }
+    .btn-transfer {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gray-bg);
+      color: #a3a3a3;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 15px;
+      border-radius: var(--radius-16);
+      border: none;
+      cursor: not-allowed;
+      text-decoration: none;
+      white-space: nowrap;
+      width: 185px;
+    }
+
+    /* DESKTOP OVERRIDE */
+    @media (min-width: 768px) {
+      body { background: var(--gray4); }
+      .campaign-page {
+        max-width: 1200px;
+        padding: 0 56px 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .page-title-block { width: 100%; max-width: 654px; }
+      .campaign-card { max-width: 654px; width: 100%; }
+      .action-bar {
+        max-width: 654px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 24px 24px 0 0;
+      }
+      .header-top-inner { padding: 0 56px; }
+      .header-bottom { padding: 16px 56px; }
+      .mobile-navbar { display: none; }
+    }
+
+    /* MOBILE */
+    @media (max-width: 767px) {
+      body { background: #fff; }
+
+      .header { display: none; }
+
+      /* Mobile navbar */
+      .mobile-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 52px;
+        background: #fff;
+        flex-shrink: 0;
+      }
+      .mobile-navbar-title {
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 20px;
+        color: #000;
+        text-align: center;
+      }
+      .mobile-navbar-close {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #000;
+        font-size: 20px;
+      }
+
+      .campaign-page {
+        padding: 0 16px 160px;
+        background: #fff;
+      }
+
+      .page-title-block {
+        padding: 12px 0 0;
+      }
+      .page-title {
+        font-size: 26px;
+        line-height: 30px;
+      }
+
+      .campaign-card {
+        border-radius: 0;
+        padding: 16px 0;
+        margin-bottom: 0;
+        border-bottom: none;
+        background: transparent;
+      }
+
+      .campaign-card-title {
+        font-size: 21px;
+        line-height: 26px;
+        margin-bottom: 4px;
+      }
+
+      .campaign-card-desc {
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 12px;
+      }
+
+      .field-label {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .field-input {
+        background: var(--gray-bg);
+        border-radius: var(--radius-16);
+        padding: 15px 18px;
+        font-size: 15px;
+        color: var(--gray-text);
+        width: 100%;
+        margin-bottom: 6px;
+      }
+
+      .btn-add {
+        background: var(--gray-bg);
+        padding: 15px 18px;
+        border-radius: var(--radius-16);
+        font-size: 15px;
+      }
+
+      .list-section-title {
+        font-size: 18px;
+        margin: 16px 0 4px;
+      }
+
+      /* Mobile bottom bar: stacked buttons */
+      .action-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding: 10px 10px 0;
+        border-radius: 24px 24px 0 0;
+        background: #fff;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.05), 0px 4px 30px rgba(0,0,0,0.12);
+      }
+
+      .btn-back { display: none; }
+
+      .action-bar-btns {
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+      }
+
+      .btn-transfer {
+        width: 100%;
+        height: 52px;
+        border-radius: 12px;
+        background: #141414;
+        color: #a3a3a3;
+        font-size: 15px;
+        order: -1;
+      }
+
+      .btn-create {
+        width: 100%;
+        height: 52px;
+        border-radius: var(--radius-16);
+        background: var(--gray-bg);
+        color: #000;
+        font-size: 15px;
+      }
+
+      /* Home indicator spacer */
+      .home-indicator {
+        display: flex;
+        justify-content: center;
+        padding: 8px 0 18px;
+      }
+      .home-indicator-bar {
+        width: 134px;
+        height: 5px;
+        background: #000;
+        border-radius: 3px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .home-indicator { display: none; }
+      .btn-transfer { order: 0; width: auto; height: auto; border-radius: var(--radius-16); background: var(--gray-bg); color: #a3a3a3; }
+      .btn-create { order: 0; width: auto; height: auto; }
+      .action-bar { flex-direction: row; justify-content: space-between; padding: 12px; gap: 0; }
+      .action-bar-btns { flex-direction: row; gap: 6px; width: auto; }
+      .btn-back { display: inline-flex; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="header-top-inner">
+      <div class="header-top-links">
+        <a href="#">Для бизнеса</a>
+        <a href="#">Карьера в Авито</a>
+        <a href="#">Помощь</a>
+        <a href="#">Каталоги</a>
+        <a href="#">#яПомогаю</a>
+      </div>
+      <div class="header-top-right">
+        <a href="#">Мои объявления</a>
+        <a href="#" class="btn-place">Разместить объявление</a>
+      </div>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <a href="index.html" class="logo"><span>●</span> Avito</a>
+    <nav class="header-nav">
+      <a href="#">#яПомогаю</a>
+      <a href="#">Благотворительность</a>
+      <a href="#">Кризисная помощь</a>
+      <a href="#" class="active">Экология</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MOBILE NAVBAR (visible on mobile only) -->
+<nav class="mobile-navbar">
+  <span class="mobile-navbar-title">Передача вещей</span>
+  <button class="mobile-navbar-close" onclick="history.back()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#000" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+</nav>
+
+<!-- CONTENT -->
+<main class="campaign-page">
+
+  <!-- Title -->
+  <div class="page-title-block">
+    <h1 class="page-title">Передача вещей для акции «Помощь семьям»</h1>
+  </div>
+
+  <!-- Card: Передать вещь (form) -->
+  <div class="campaign-card">
+    <div class="campaign-card-title">Передать вещь</div>
+    <div class="campaign-card-desc">Выберите объявление с вещью, которую хотите передать. Фонды увидят его и свяжутся с вами.</div>
+
+    <div class="field-label">Объявление с вещью, которую хотите передать</div>
+    <div class="field-input">Вставьте ссылку на объявление</div>
+    <button class="btn-add">Добавить объявление</button>
+  </div>
+
+  <!-- Card: Что можно передать -->
+  <div class="campaign-card">
+    <div class="campaign-card-title">Какие вещи можно передать</div>
+    <div class="campaign-card-desc">Передавайте вещи, которые могут быть полезны семьям с детьми.</div>
+
+    <div class="list-section-title">Одежда и обувь</div>
+    <ul class="item-list">
+      <li>детская одежда</li>
+      <li>взрослая одежда</li>
+      <li>сезонная верхняя одежда</li>
+      <li>обувь для детей и взрослых</li>
+    </ul>
+
+    <div class="list-section-title" style="margin-top:16px;">Детские товары</div>
+    <ul class="item-list">
+      <li>коляски</li>
+      <li>кроватки</li>
+      <li>стульчики для кормления</li>
+      <li>автокресла</li>
+      <li>переноски</li>
+    </ul>
+
+    <div class="list-section-title" style="margin-top:16px;">Товары для ухода за детьми</div>
+    <ul class="item-list">
+      <li>пеленки</li>
+      <li>подгузники (в закрытой упаковке)</li>
+      <li>детские пледы и одеяла</li>
+    </ul>
+
+    <div class="list-section-title" style="margin-top:16px;">Текстиль</div>
+    <ul class="item-list">
+      <li>постельное бельё</li>
+      <li>полотенца</li>
+      <li>пледы</li>
+    </ul>
+
+    <div class="list-section-title" style="margin-top:16px;">Для школы и досуга</div>
+    <ul class="item-list">
+      <li>школьные рюкзаки</li>
+      <li>детские книги</li>
+      <li>развивающие игрушки</li>
+    </ul>
+  </div>
+
+  <!-- Card: Что не подойдёт -->
+  <div class="campaign-card">
+    <div class="campaign-card-title">Какие вещи не подойдут</div>
+    <div class="campaign-card-desc">Фонды не смогут принять вещи, если они:</div>
+    <ul class="item-list">
+      <li>сильно изношены или повреждены</li>
+      <li>грязные или требуют ремонта</li>
+      <li>сломанные или нерабочие</li>
+      <li>неполные комплекты</li>
+      <li>нижнее бельё без упаковки</li>
+      <li>просроченные товары</li>
+    </ul>
+  </div>
+
+  <!-- Card: Требования к вещам -->
+  <div class="campaign-card">
+    <div class="campaign-card-title">Требования к вещам</div>
+    <div class="campaign-card-desc">Перед передачей убедитесь, что вещи:</div>
+    <ul class="item-list">
+      <li>чистые</li>
+      <li>в хорошем состоянии</li>
+      <li>безопасны для использования</li>
+      <li>полностью укомплектованы</li>
+    </ul>
+  </div>
+
+  <!-- Card: Фонды-партнёры -->
+  <div class="campaign-card">
+    <div class="campaign-card-title">Фонды–партнёры</div>
+    <div class="campaign-card-desc">АНО ЦППЛ</div>
+  </div>
+
+</main>
+
+<!-- BOTTOM ACTION BAR -->
+<div class="action-bar">
+  <a href="index.html" class="btn-back">Назад</a>
+  <div class="action-bar-btns">
+    <button class="btn-transfer" disabled>Передать вещи</button>
+    <a href="#" class="btn-create">Создать объявление</a>
+  </div>
+  <div class="home-indicator"><div class="home-indicator-bar"></div></div>
+</div>
+
+</body>
+</html>

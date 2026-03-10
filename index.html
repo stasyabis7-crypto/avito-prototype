@@ -782,19 +782,21 @@
     .illo-recycle {
       background: linear-gradient(90deg, #F4EEFE 10%, #E3F7FF 90%);
     }
+    /* TAB 2 — Вывоз: по центру снизу, 550x302px, опущен на 62px */
     #tab-img-2 .tab-illo-vivoz {
       position: absolute;
       bottom: -62px;
       left: 50%;
       transform: translateX(-50%);
-      width: 637px;
-      height: 350px;
+      width: 550px;
+      height: 302px;
       object-fit: cover;
       pointer-events: none;
     }
     #tab-img-2 {
       overflow: hidden;
     }
+    /* TAB 3 — Переработка: сдвинута влево на 113px от центра */
     #tab-img-3 .tab-illo-recycle {
       position: absolute;
       bottom: 0;
@@ -825,7 +827,8 @@
       overflow: hidden;
       position: relative;
     }
-    .tab-panel-img .tab-illo {
+    /* TAB 0 — #яПомогаю: по центру снизу, 72% высоты */
+    #tab-img-0 .tab-illo {
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -837,15 +840,22 @@
       object-position: bottom center;
       pointer-events: none;
     }
+    /* TAB 1 — Пункт приёма: по центру снизу, 95% ширины */
     #tab-img-1 {
       overflow: visible;
     }
     #tab-img-1 .tab-illo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 95%;
       height: auto;
       max-width: 95%;
+      object-fit: contain;
+      pointer-events: none;
     }
-    /* Tab 2: exact Figma proportions — 496x426 in 656x359 container, bottom: -53px */
+    /* TAB 1 — Пункт приёма (альт. класс) */
     .tab-illo-punkt {
       position: absolute;
       left: 50%;

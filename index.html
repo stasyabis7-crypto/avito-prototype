@@ -1161,74 +1161,324 @@
 
     /* ===================== MOBILE ===================== */
     @media (max-width: 767px) {
+      /* ── HEADER ── */
       .header-top { display: none; }
-      .header-bottom {
-        padding: 12px 16px;
-        gap: 12px;
-      }
+      .header-bottom { padding: 12px 16px; gap: 12px; }
       .header-nav { display: none; }
 
+      /* ── 1. HERO BANNER ── */
       .hero-wrap {
-        padding: 0 16px;
-        margin: 12px auto;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
       }
+      .hero-outer { padding: 0; }
       .hero {
-        border-radius: 24px;
-        min-height: 220px;
+        border-radius: 0;
+        height: 630px;
+        min-height: 630px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      .hero-img-left, .hero-img-right {
-        max-width: 160px;
+      .hero-img-left, .hero-img-right { display: none; }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('images/hero mobile.png') center bottom / contain no-repeat;
+        z-index: 0;
       }
       .hero-content {
-        padding: 40px 20px;
+        position: relative;
+        z-index: 1;
+        padding: 32px 24px 0;
+        width: 100%;
+        text-align: left;
       }
-      .hero-title { font-size: 32px; }
-      .hero-subtitle { font-size: 15px; }
-      .btn-primary { font-size: 16px; padding: 16px 20px; }
+      .hero-title {
+        font-size: 32px;
+        line-height: 36px;
+        text-align: left;
+        color: #000;
+      }
+      .hero-subtitle {
+        font-size: 15px;
+        line-height: 22px;
+        text-align: left;
+      }
+      .btn-primary {
+        display: flex;
+        width: calc(100% - 48px);
+        margin: 16px 24px 0;
+        font-size: 15px;
+        padding: 16px;
+        box-sizing: border-box;
+      }
 
-      .page-content { padding: 0 16px; }
+      /* ── 2. SECTION TITLES ── */
+      .page-content { padding: 0 26px; }
+      .section { padding-top: 48px; }
+      .section-title {
+        color: #000;
+        text-align: left;
+        font-family: var(--font);
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 36px;
+        margin-bottom: 16px;
+      }
+      .section-title + .section-subtitle { margin-top: 0; }
+      .section-subtitle {
+        font-size: 15px;
+        line-height: 22px;
+        text-align: left;
+        margin-bottom: 24px;
+      }
 
-      .section { padding-top: 56px; }
-      .section-title { font-size: 28px; margin-bottom: 32px; }
-      .section-title + .section-subtitle { margin-top: -16px; }
-      .section-subtitle { font-size: 15px; margin-bottom: 32px; }
+      /* ── 4. КАК ПЕРЕДАТЬ ВЕЩИ — accordion ── */
+      .how-tabs {
+        flex-direction: column;
+        gap: 0;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .tabs-image-panel { display: none !important; }
+      .tab-item {
+        border-radius: 0;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .tab-item:first-child { border-top: 1px solid #e8e8e8; }
+      .tab-header {
+        padding: 20px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .tab-title {
+        font-size: 21px;
+        font-weight: 800;
+        line-height: 26px;
+        color: #000;
+        flex: 1;
+      }
+      .tab-arrow {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+        margin-left: 12px;
+        transition: transform 0.2s;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+      .tab-item.active .tab-arrow { transform: rotate(180deg); }
+      .tab-content {
+        display: none;
+        padding: 0 0 24px;
+        border-top: none;
+      }
+      .tab-item.active .tab-content { display: block; }
+      .tab-panel-img {
+        width: 100%;
+        height: 240px;
+        border-radius: 28px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        object-fit: cover;
+      }
+      .tab-panel-text { padding: 0; }
+      .tab-panel-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+      .tab-panel-desc { font-size: 15px; line-height: 22px; margin-bottom: 16px; }
+      .tab-panel-btns { display: flex; flex-direction: column; gap: 6px; }
+      .tab-panel-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 52px; font-size: 15px; font-weight: 500; border-radius: 16px; border: none; cursor: pointer; text-decoration: none; }
+      .tab-panel-btn-primary { background: #141414; color: #fff; }
+      .tab-panel-btn-secondary { background: var(--gray-bg); color: #000; }
 
-      .how-tabs { flex-direction: column; gap: 0; }
-      .tabs-image-panel { display: none; }
-      .tab-title { font-size: 18px; }
-      .tab-header { padding: 16px 0; }
+      /* ── 5. КАК ЭТО РАБОТАЕТ — horizontal scroll ── */
+      .cards-grid-3 {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+        margin: 0 -26px;
+        padding-left: 26px;
+        padding-right: 26px;
+      }
+      .cards-grid-3::after { content: ''; flex-shrink: 0; width: 2px; }
+      .step-card {
+        flex-shrink: 0;
+        width: 280px;
+        scroll-snap-align: start;
+        padding: 20px 24px 28px;
+      }
+      .step-icon { width: 86px; height: 86px; margin-bottom: 16px; }
+      .step-title { font-size: 21px; font-weight: 800; line-height: 26px; margin-bottom: 4px; }
+      .step-desc { font-size: 15px; line-height: 22px; }
 
-      .cards-grid-3, .what-cards, .after-cards {
+      /* ── 6. ЧТО МОЖНО ПЕРЕДАТЬ — square images ── */
+      .what-cards {
         grid-template-columns: 1fr;
         gap: 16px;
       }
-      .step-card { padding: 16px 20px 24px; }
-      .step-title { font-size: 18px; }
-      .step-desc { font-size: 15px; }
-
-      .what-card-img { height: 220px; }
+      .what-card-img {
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
       .what-card-title { font-size: 20px; }
 
-      .info-banner { padding: 24px 20px; flex-direction: column; }
-      .info-banner-deco { display: none; }
-      .info-banner-title { font-size: 20px; }
+      /* ── 7. БАННЕР ОБ ОБЪЯВЛЕНИИ ── */
+      .info-banner {
+        flex-direction: column;
+        padding: 20px 24px 0;
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+        min-height: auto;
+      }
+      .info-banner-text {
+        position: relative;
+        z-index: 1;
+        max-width: 100%;
+        padding-bottom: 0;
+      }
+      .info-banner-title { font-size: 21px; line-height: 26px; font-weight: 800; margin-bottom: 6px; }
+      .info-banner-desc { font-size: 15px; line-height: 22px; margin-bottom: 16px; }
+      .info-banner-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 52px;
+        background: #141414;
+        color: #fff;
+        font-size: 15px;
+        font-weight: 500;
+        border-radius: 16px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 20px;
+        font-family: var(--font);
+      }
+      .info-banner-deco {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+        margin: 0 -24px;
+        width: calc(100% + 48px);
+        overflow: hidden;
+      }
+      .info-banner-deco img {
+        width: 80%;
+        max-width: 280px;
+        height: auto;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+      }
 
-      .after-card { padding: 16px 20px 24px; }
-      .after-card-title { font-size: 18px; }
-      .after-card-desc { font-size: 15px; }
+      /* ── 8. ЧТО ПРОИСХОДИТ ПОСЛЕ — horizontal scroll ── */
+      .after-cards {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+        margin: 0 -26px;
+        padding-left: 26px;
+        padding-right: 26px;
+      }
+      .after-cards::after { content: ''; flex-shrink: 0; width: 2px; }
+      .after-card {
+        flex-shrink: 0;
+        width: 280px;
+        scroll-snap-align: start;
+        padding: 20px 24px 28px;
+      }
+      .after-card-icon-wrap { width: 86px; height: 86px; margin-bottom: 16px; }
+      .after-card-title { font-size: 21px; font-weight: 800; line-height: 26px; margin-bottom: 4px; }
+      .after-card-desc { font-size: 15px; line-height: 22px; }
 
-      .campaign-cards { grid-template-columns: 1fr; }
-      .campaign-card-img { height: 220px; }
+      /* ── 9. ПОДАРИТЕ ВЕЩАМ — tabs scroll, filters column, 2-col grid ── */
+      .ads-tabs-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -26px;
+        padding: 0 26px;
+      }
+      .ads-tabs { flex-wrap: nowrap; min-width: max-content; }
+      .ads-filters-search {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .ads-filters { flex-wrap: wrap; width: 100%; gap: 8px; }
+      .ads-search-wrap {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+      }
+      .ads-search-input { flex: 1; }
+      .ads-cards {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px 12px;
+      }
+      .ads-card-img { height: auto; min-height: unset; max-height: unset; aspect-ratio: 1/1; }
+
+      /* ── 10. АКТИВНЫЕ АКЦИИ — square cards ── */
+      .campaign-cards { grid-template-columns: 1fr; gap: 16px; }
+      .campaign-card-img {
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
       .campaign-title { font-size: 20px; }
 
-      .faq-layout { flex-direction: column; }
+      /* ── 11. ВОПРОСЫ И ОТВЕТЫ ── */
+      .faq-layout { flex-direction: column; gap: 16px; }
       .faq-aside { width: 100%; }
+      .faq-list { width: 100%; }
+      .faq-item { width: 100%; border-radius: 16px; }
       .faq-question { font-size: 17px; }
+      .faq-banner-kitty {
+        display: block !important;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 90px;
+        height: auto;
+      }
+      .faq-banner { position: relative; overflow: hidden; padding-right: 100px; }
 
-      .footer { padding: 32px 16px; margin-top: 56px; }
+      .footer { padding: 32px 26px; margin-top: 48px; }
     }
 
-    /* Placeholder illustrations using CSS */
+    /* Mobile tab image (shown inside accordion on mobile) */
+    .tab-mobile-img {
+      display: none;
+    }
+    @media (max-width: 767px) {
+      .tab-mobile-img {
+        display: block;
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 16px;
+      }
+    }
     .illo-yapomogayu {
       background: linear-gradient(135deg, #e3f7ff, #c8e8ff);
       display: flex;
@@ -1409,9 +1659,10 @@
         <div class="tab-item active" onclick="switchTab(0)">
           <div class="tab-header">
             <span class="tab-title">Через #ЯПомогаю</span>
-            <span class="tab-arrow"></span>
+            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
           <div class="tab-content">
+            <img class="tab-mobile-img" src="images/tab1-yapomogayu.png" alt="#яПомогаю" />
             <p class="tab-desc">Разместите объявление, и его увидят организации и люди, которым нужна&nbsp;помощь</p>
             <div class="tab-btns">
               <a href="#" class="btn-primary-sm">Создать объявление</a>
@@ -1424,9 +1675,10 @@
         <div class="tab-item" onclick="switchTab(1)">
           <div class="tab-header">
             <span class="tab-title">Отнести в пункт приёма вещей</span>
-            <span class="tab-arrow"></span>
+            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
           <div class="tab-content">
+            <img class="tab-mobile-img" src="images/tab2-punkt.png" alt="Пункт приёма" />
             <p class="tab-desc">Найдите ближайший пункт приёма вещей и передайте&nbsp;их&nbsp;лично</p>
             <div class="tab-btns">
               <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-primary-sm">Открыть карту</a>
@@ -1439,9 +1691,10 @@
         <div class="tab-item" onclick="switchTab(2)">
           <div class="tab-header">
             <span class="tab-title">Заказать вывоз вещей на дом</span>
-            <span class="tab-arrow"></span>
+            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
           <div class="tab-content">
+            <img class="tab-mobile-img" src="images/tab3-vivoz.png" alt="Вывоз" />
             <p class="tab-desc">Оставьте заявку, и партнёры заберут вещи прямо из&nbsp;вашего&nbsp;дома</p>
             <div class="tab-btns">
               <a href="https://www.avito.ru/avito-care/donate-things?shareThingsOpen=true" target="_blank" class="btn-primary-sm">Оставить заявку</a>
@@ -1454,9 +1707,10 @@
         <div class="tab-item" onclick="switchTab(3)">
           <div class="tab-header">
             <span class="tab-title">Сдать на переработку</span>
-            <span class="tab-arrow"></span>
+            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
           <div class="tab-content">
+            <img class="tab-mobile-img" src="images/tab4-recycle.png" alt="Переработка" />
             <p class="tab-desc">Передайте вещи, не подходящие для повторного использования, на&nbsp;переработку</p>
             <div class="tab-btns">
               <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-secondary">Найти пункт</a>
@@ -1546,9 +1800,7 @@
       <div class="info-banner-text">
         <div class="info-banner-title">Объявление не будет видно в поиске</div>
         <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
-        <a href="#" class="btn-primary-sm">Создать объявление</a>
-      </div>
-      <div class="info-banner-deco">
+        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
         <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
       </div>
     </div>
@@ -1848,12 +2100,25 @@
   const tabImgs = document.querySelectorAll('[id^="tab-img-"]');
 
   function switchTab(index) {
-    tabItems.forEach((item, i) => {
-      item.classList.toggle('active', i === index);
-    });
-    tabImgs.forEach((img, i) => {
-      img.style.display = i === index ? 'flex' : 'none';
-    });
+    var isMobile = window.innerWidth <= 767;
+    if (isMobile) {
+      // Accordion behavior: toggle clicked, close others
+      tabItems.forEach((item, i) => {
+        if (i === index) {
+          item.classList.toggle('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    } else {
+      // Desktop: activate selected, update image panel
+      tabItems.forEach((item, i) => {
+        item.classList.toggle('active', i === index);
+      });
+      tabImgs.forEach((img, i) => {
+        img.style.display = i === index ? 'flex' : 'none';
+      });
+    }
   }
 
   // Prevent double-click issues

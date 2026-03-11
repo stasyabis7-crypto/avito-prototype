@@ -193,6 +193,101 @@
       .home-indicator { display: none; }
       .action-bar { max-width: 654px; left: 50%; transform: translateX(-50%); }
     }
+    /* SUCCESS POPUP */
+    .success-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 600;
+    }
+    .success-backdrop.visible { display: block; }
+    .success-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 470px;
+      background: #fff;
+      border-radius: 28px;
+      overflow: hidden;
+      z-index: 601;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .success-modal.visible { display: block; }
+    .success-modal-ill {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(180deg, #e3f7ff 10%, #e2ffd6 90%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-modal-ill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0) 60%, #fff 97%);
+    }
+    .success-modal-ill img {
+      width: 173px;
+      height: 136px;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+    }
+    .success-modal-body {
+      padding: 0 40px 44px;
+    }
+    .success-modal-title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      color: #000;
+      margin-bottom: 4px;
+    }
+    .success-modal-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      color: #000;
+      margin-bottom: 16px;
+    }
+    .success-modal-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 52px;
+      background: #141414;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .success-modal-btn:hover { background: #333; }
+    .success-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: opacity 0.15s;
+    }
+    .success-modal-close:hover { opacity: 0.6; }
   </style>
 </head>
 <body>
@@ -393,6 +488,11 @@ function renderContent(key) {
 function fillDropdown(dropdownId, ownSelected) {
   var ads = CAMPAIGNS[currentCampaign].ads;
 
+  // Exclude ads currently in "На рассмотрении" (stored in sessionStorage)
+  var reviewRaw = sessionStorage.getItem('reviewAd');
+  var reviewTitle = null;
+  if (reviewRaw) { try { reviewTitle = JSON.parse(reviewRaw).title; } catch(e) {} }
+
   // Gather taken indices
   var taken = [];
   if (primarySelected !== null) taken.push(primarySelected);
@@ -406,6 +506,7 @@ function fillDropdown(dropdownId, ownSelected) {
   var html = '';
   for (var i = 0; i < ads.length; i++) {
     if (taken.indexOf(i) > -1) continue;
+    if (reviewTitle && ads[i] === reviewTitle) continue; // hide if already in review
     var sel = (i === ownSelected);
     html += '<div class="dropdown-item' + (sel ? ' selected' : '') + '" data-idx="' + i + '">'
           + ads[i]
@@ -540,7 +641,57 @@ function updateTransferBtn() {
   }
 }
 
+/* ───────────────── SUCCESS POPUP ───────────────── */
+document.getElementById('btn-transfer').addEventListener('click', function() {
+  if (primarySelected === null) return;
+  var c = CAMPAIGNS[currentCampaign];
+  var adTitle = c.ads[primarySelected];
+  // Show success popup with campaign name
+  document.getElementById('success-title').textContent =
+    'Фонд получил ваше объявление для акции ' + c.label;
+  // Save to sessionStorage for index.html to pick up
+  sessionStorage.setItem('reviewAd', JSON.stringify({
+    title: adTitle,
+    campaign: c.label
+  }));
+  document.getElementById('success-backdrop').classList.add('visible');
+  document.getElementById('success-modal').classList.add('visible');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeSuccessPopup() {
+  document.getElementById('success-backdrop').classList.remove('visible');
+  document.getElementById('success-modal').classList.remove('visible');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('success-goto-ads').addEventListener('click', function() {
+  closeSuccessPopup();
+  // Navigate to index.html and scroll to ads section
+  window.location.href = 'index.html#ads-section';
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSuccessPopup();
+});
+
 init();
 </script>
+<!-- SUCCESS POPUP -->
+<div class="success-backdrop" id="success-backdrop" onclick="closeSuccessPopup()"></div>
+<div class="success-modal" id="success-modal">
+  <button class="success-modal-close" onclick="closeSuccessPopup()">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="success-modal-ill">
+    <img src="https://www.figma.com/api/mcp/asset/6ac414c0-0f86-4d79-ab37-c4a2b7679df1" alt="" />
+  </div>
+  <div class="success-modal-body">
+    <div class="success-modal-title" id="success-title">Фонд получил ваше объявление для акции</div>
+    <div class="success-modal-desc">Фонд получил ваше объявление. Если вещь подойдёт, с вами свяжутся в чате Авито. Мы покажем статус в разделе объявлений.</div>
+    <button class="success-modal-btn" id="success-goto-ads">Перейти к объявлениям</button>
+  </div>
+</div>
+
 </body>
 </html>

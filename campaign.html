@@ -240,7 +240,7 @@
       z-index: 1;
     }
     .success-modal-body {
-      padding: 0 40px 44px;
+      padding: 16px 40px 44px;
     }
     .success-modal-title {
       font-size: 24px;
@@ -665,12 +665,6 @@ function closeSuccessPopup() {
   document.body.style.overflow = '';
 }
 
-document.getElementById('success-goto-ads').addEventListener('click', function() {
-  closeSuccessPopup();
-  // Navigate to index.html and scroll to ads section
-  window.location.href = 'index.html#ads-section';
-});
-
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeSuccessPopup();
 });
@@ -684,12 +678,12 @@ init();
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>
   </button>
   <div class="success-modal-ill">
-    <img src="https://www.figma.com/api/mcp/asset/6ac414c0-0f86-4d79-ab37-c4a2b7679df1" alt="" />
+    <img src="https://www.figma.com/api/mcp/asset/9cd3b0ac-5dfd-4ab6-8b5a-a59827b3b5b9" alt="" />
   </div>
   <div class="success-modal-body">
     <div class="success-modal-title" id="success-title">Фонд получил ваше объявление для акции</div>
     <div class="success-modal-desc">Фонд получил ваше объявление. Если вещь подойдёт, с вами свяжутся в чате Авито. Мы покажем статус в разделе объявлений.</div>
-    <button class="success-modal-btn" id="success-goto-ads">Перейти к объявлениям</button>
+    <button class="success-modal-btn" id="success-goto-ads" onclick="window.location.href='index.html#ads-section'">Перейти к объявлениям</button>
   </div>
 </div>
 

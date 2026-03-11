@@ -449,7 +449,7 @@
       justify-content: space-between;
       gap: 40px;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
     .info-banner-text { max-width: 620px; z-index: 1; }
     .info-banner-title {
@@ -469,9 +469,19 @@
       right: 0;
       bottom: 0;
       width: 447px;
-      height: 234px;
+      height: 388px; /* выходит сверху: 234px + 154px */
       pointer-events: none;
-      flex-shrink: 0;
+      border-radius: 0 var(--radius-28) var(--radius-28) 0;
+      overflow: hidden;
+    }
+    .info-banner-deco img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 447px;
+      height: 388px;
+      object-fit: contain;
+      object-position: right bottom;
     }
 
     /* AFTER POSTING */
@@ -1149,7 +1159,7 @@
         <a href="#" class="btn-primary-sm">Создать объявление</a>
       </div>
       <div class="info-banner-deco">
-        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none'" />
+        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
       </div>
     </div>
   </div>

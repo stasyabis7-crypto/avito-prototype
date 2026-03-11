@@ -388,7 +388,7 @@
     .what-card-img {
       background: var(--gray4);
       border-radius: var(--radius-28);
-      height: 280px;
+      height: 360px;
       overflow: hidden;
       margin-bottom: 16px;
       position: relative;
@@ -468,9 +468,10 @@
       position: absolute;
       right: 0;
       bottom: 0;
-      width: 300px;
+      width: 447px;
       height: 234px;
       pointer-events: none;
+      flex-shrink: 0;
     }
 
     /* AFTER POSTING */
@@ -493,13 +494,32 @@
       margin-bottom: 16px;
       overflow: hidden;
     }
-    .after-card-icon {
+    .after-card-icon-1 {
       width: 191px;
       height: 191px;
       position: absolute;
       left: -36px;
       top: -35px;
       object-fit: contain;
+      pointer-events: none;
+    }
+    .after-card-icon-2 {
+      width: 165px;
+      height: 165px;
+      position: absolute;
+      left: -22px;
+      top: -22px;
+      object-fit: contain;
+      pointer-events: none;
+    }
+    .after-card-icon-3 {
+      width: 191px;
+      height: 191px;
+      position: absolute;
+      left: -36px;
+      top: -35px;
+      object-fit: contain;
+      pointer-events: none;
     }
     .after-card-title {
       font-size: 24px;
@@ -521,32 +541,51 @@
       gap: 24px;
     }
     .campaign-card {
-      cursor: pointer;
       border-radius: var(--radius-28);
-      overflow: hidden;
       background: #fff;
-      transition: transform 0.15s, box-shadow 0.15s;
       text-decoration: none;
       color: inherit;
       display: block;
+      cursor: default;
+      pointer-events: none;
     }
-    .campaign-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
     .campaign-card-img {
-      height: 280px;
+      height: 360px;
       border-radius: var(--radius-28);
       overflow: hidden;
       position: relative;
       margin-bottom: 16px;
     }
-    .campaign-card-img img { width: 100%; height: 100%; object-fit: cover; }
-    .campaign-img-1 { background: linear-gradient(90deg, #e3f7ff 10%, #f4eefe 90%); }
-    .campaign-img-2 { background: linear-gradient(90deg, #f4eefe 10%, #e2ffd6 90%); }
+    /* Иллюстрация карточки 1 — кроссовки, центр снизу */
+    .campaign-card-img.campaign-img-1 .campaign-illo {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 442px;
+      height: 379px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    /* Иллюстрация карточки 2 — книги, центр снизу */
+    .campaign-card-img.campaign-img-2 .campaign-illo {
+      position: absolute;
+      bottom: -227px;
+      left: 50%;
+      transform: translateX(-50%) translateX(14px);
+      width: 438px;
+      height: 503px;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .campaign-img-1 { background: linear-gradient(90deg, #E3F7FF 10%, #F4EEFE 90%); }
+    .campaign-img-2 { background: linear-gradient(90deg, #F4EEFE 10%, #E2FFD6 90%); }
     .campaign-fund-logos {
       position: absolute;
       bottom: 20px;
       right: 20px;
       display: flex;
-      gap: -8px;
+      align-items: center;
     }
     .fund-logo {
       width: 60px;
@@ -557,13 +596,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--black);
       overflow: hidden;
+      position: relative;
     }
+    .fund-logo + .fund-logo { margin-left: -8px; }
+    .fund-logo:nth-child(1) { z-index: 3; }
+    .fund-logo:nth-child(2) { z-index: 2; }
+    .fund-logo:nth-child(3) { z-index: 1; }
     .fund-logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
-    .campaign-card-content { padding: 0 0 8px; }
+    .campaign-card-content { padding: 0 0 8px; pointer-events: all; }
     .campaign-title {
       font-size: 26px;
       font-weight: 800;
@@ -814,7 +855,7 @@
     /* TAB 2 — Вывоз: по центру снизу */
     #tab-img-2 .tab-illo-vivoz {
       position: absolute;
-      bottom: -15px;
+      bottom: 5px;
       left: 50%;
       transform: translateX(-50%);
       width: 470px;
@@ -889,7 +930,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -14.8%;
+      bottom: calc(-14.8% + 75px);
       width: 75.6%;
       height: auto;
       pointer-events: none;
@@ -1121,21 +1162,21 @@
     <div class="after-cards">
       <div class="after-card">
         <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon" src="images/after1-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23e8f5e9%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>📬</text></svg>'" />
+          <img loading="lazy" decoding="async" class="after-card-icon-1" src="images/after1-icon.png" alt="" />
         </div>
         <div class="after-card-title">Организации могут ответить не сразу</div>
         <div class="after-card-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и откликнулись</div>
       </div>
       <div class="after-card">
         <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon" src="images/after2-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23f3e5f5%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>💬</text></svg>'" />
+          <img loading="lazy" decoding="async" class="after-card-icon-2" src="images/after2-icon.png" alt="" />
         </div>
         <div class="after-card-title">Если вам пишут не только фонды</div>
         <div class="after-card-desc">Вы сами решаете, кому передать вещь. Выбирайте того, кому доверяете и кому она принесёт больше пользы</div>
       </div>
       <div class="after-card">
         <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon" src="images/after3-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 rx=%2216%22 fill=%22%23e3f2fd%22/><text x=%2260%22 y=%2275%22 font-size=%2260%22 text-anchor=%22middle%22>🔍</text></svg>'" />
+          <img loading="lazy" decoding="async" class="after-card-icon-3" src="images/after3-icon.png" alt="" />
         </div>
         <div class="after-card-title">Если пока никто<br>не откликнулся</div>
         <div class="after-card-desc">Такое тоже бывает. В этом случае вы всегда можете передать вещь другим удобным для вас способом</div>
@@ -1154,44 +1195,44 @@
     </div>
     <div class="campaign-cards">
       <!-- Campaign 1: Помощь семьям -->
-      <a href="campaign.html" class="campaign-card">
+      <div class="campaign-card">
         <div class="campaign-card-img campaign-img-1">
-          <img loading="lazy" decoding="async" src="images/campaign1-img.png" alt="Помощь семьям" onerror="this.parentNode.style.fontSize='80px';this.parentNode.innerHTML+='👟';this.remove()" style="width:100%;height:100%;object-fit:cover;" />
+          <img loading="lazy" decoding="async" class="campaign-illo" src="images/campaign1-img.png" alt="" />
           <div class="campaign-fund-logos">
             <div class="fund-logo">
-              <img loading="lazy" decoding="async" src="images/campaign1-logo.png" alt="ЦППЛ" onerror="this.parentNode.textContent='ЦППЛ'" />
+              <img loading="lazy" decoding="async" src="images/campaign1-logo.png" alt="ЦППЛ" />
             </div>
           </div>
         </div>
         <div class="campaign-card-content">
           <div class="campaign-title">Помощь семьям</div>
           <div class="campaign-desc">Одежда, обувь и детские вещи для срочной поддержки</div>
-          <a href="campaign.html" class="btn-primary-sm" onclick="event.stopPropagation()">Передать вещи</a>
+          <a href="campaign.html" class="btn-primary-sm" style="pointer-events:all;">Передать вещи</a>
         </div>
-      </a>
+      </div>
 
       <!-- Campaign 2: Книги и техника -->
-      <a href="campaign.html" class="campaign-card">
+      <div class="campaign-card">
         <div class="campaign-card-img campaign-img-2">
-          <img loading="lazy" decoding="async" src="images/campaign2-img.png" alt="Книги и техника" onerror="this.parentNode.style.fontSize='80px';this.parentNode.innerHTML+='📚';this.remove()" style="width:100%;height:100%;object-fit:cover;" />
-          <div class="campaign-fund-logos" style="gap:0;">
-            <div class="fund-logo" style="z-index:3;position:relative;">
-              <img loading="lazy" decoding="async" src="images/campaign2-logo1.png" alt="" onerror="this.parentNode.textContent='Ф1'" />
+          <img loading="lazy" decoding="async" class="campaign-illo" src="images/campaign2-img.png" alt="" />
+          <div class="campaign-fund-logos">
+            <div class="fund-logo">
+              <img loading="lazy" decoding="async" src="images/campaign2-logo1.png" alt="" />
             </div>
-            <div class="fund-logo" style="z-index:2;position:relative;margin-left:-8px;">
-              <img loading="lazy" decoding="async" src="images/campaign2-logo2.png" alt="" onerror="this.parentNode.textContent='Ф2'" />
+            <div class="fund-logo">
+              <img loading="lazy" decoding="async" src="images/campaign2-logo2.png" alt="" />
             </div>
-            <div class="fund-logo" style="z-index:1;position:relative;margin-left:-8px;">
-              <img loading="lazy" decoding="async" src="images/campaign2-logo3.png" alt="" onerror="this.parentNode.textContent='Ф3'" />
+            <div class="fund-logo">
+              <img loading="lazy" decoding="async" src="images/campaign2-logo3.png" alt="" />
             </div>
           </div>
         </div>
         <div class="campaign-card-content">
           <div class="campaign-title">Книги и техника</div>
           <div class="campaign-desc">Подборка акций для вещей, которые чаще всего нужны фондам и партнёрам</div>
-          <a href="campaign.html" class="btn-primary-sm" onclick="event.stopPropagation()">Передать вещи</a>
+          <a href="campaign.html" class="btn-primary-sm" style="pointer-events:all;">Передать вещи</a>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>

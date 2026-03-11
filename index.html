@@ -1043,12 +1043,13 @@
     .ads-popup-step {
       background: var(--gray-bg);
       border-radius: 24px;
-      padding: 20px 24px 28px;
+      padding: 20px 0 28px 24px;
       display: flex;
       gap: 12px;
       align-items: stretch;
       overflow: hidden;
       min-height: 174px;
+      position: relative;
     }
     .ads-popup-step-left {
       flex: 1;
@@ -1056,18 +1057,21 @@
       flex-direction: column;
       gap: 6px;
       min-width: 0;
+      padding-right: 0;
     }
     .ads-popup-step-title {
       font-size: 18px;
       font-weight: 800;
       line-height: 22px;
       color: var(--black);
+      padding-right: 8px;
     }
     .ads-popup-step-desc {
       font-size: 15px;
       font-weight: 500;
       line-height: 22px;
       color: var(--black);
+      padding-right: 8px;
     }
     .ads-popup-btn {
       display: inline-flex;
@@ -1092,25 +1096,27 @@
     }
     .ads-popup-btn:hover { opacity: 0.75; }
     .ads-popup-step-right {
-      width: 164px;
+      width: 188px;
       flex-shrink: 0;
       position: relative;
+      align-self: stretch;
+      margin: -28px -24px -28px 0;
       overflow: hidden;
-      margin: -20px -24px -28px 0;
+      border-radius: 0 24px 24px 0;
     }
     .ads-popup-step-right img {
       position: absolute;
       bottom: 0;
       right: 0;
-      width: 188px;
+      width: auto;
       height: auto;
-      object-fit: cover;
+      max-width: none;
       pointer-events: none;
     }
-    .ads-popup-img-1 img { width: 179px; height: 166px; object-fit: cover; position: absolute; bottom: 0; right: 0; }
-    .ads-popup-img-2 img { width: 179px; height: 166px; object-fit: cover; position: absolute; bottom: 0; right: 0; }
-    .ads-popup-img-3 img { width: 179px; height: 166px; object-fit: cover; position: absolute; bottom: 0; right: 0; }
-    .ads-popup-img-4 img { width: 179px; height: 166px; object-fit: cover; position: absolute; bottom: 0; right: 0; }
+    .ads-popup-img-1 img { width: 188px; bottom: -28px; right: -24px; }
+    .ads-popup-img-2 img { width: 188px; bottom: -28px; right: -24px; }
+    .ads-popup-img-3 img { width: 188px; bottom: -28px; right: -24px; }
+    .ads-popup-img-4 img { width: 188px; bottom: -43px; right: -24px; }
 
     /* FOOTER */
     .footer {

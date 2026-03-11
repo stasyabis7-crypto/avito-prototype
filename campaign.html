@@ -86,14 +86,12 @@
       padding: 22px 18px 24px;
     }
     .select-dropdown.open { display: block; }
-    .dropdown-item {
-      padding: 15px 0; font-size: 15px; font-weight: 500; line-height: 20px;
-      color: var(--black); cursor: pointer;
-      border-bottom: 1px solid #f0f0f0; transition: color 0.1s;
-    }
+    .dropdown-item { padding: 15px 0; font-size: 15px; font-weight: 500; line-height: 20px; color: var(--black); cursor: pointer; border-bottom: 1px solid #f0f0f0; transition: color 0.1s; display: flex; align-items: center; justify-content: space-between; }
     .dropdown-item:last-child { border-bottom: none; }
     .dropdown-item:hover { color: #555; }
     .dropdown-item.selected { font-weight: 700; }
+    .dropdown-item .check-icon { display: none; flex-shrink: 0; width: 16px; height: 20px; }
+    .dropdown-item.selected .check-icon { display: flex; align-items: center; justify-content: center; }
 
     .btn-add {
       display: inline-flex; align-items: center; justify-content: center;
@@ -221,8 +219,8 @@
           <span class="select-arrow"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
         <div class="select-dropdown" id="campaign-dropdown">
-          <div class="dropdown-item selected" onclick="selectCampaign('pomosh', this)">«Помощь семьям»</div>
-          <div class="dropdown-item" onclick="selectCampaign('knigi', this)">«Книги и техника»</div>
+          <div class="dropdown-item selected" onclick="selectCampaign('pomosh', this)">«Помощь семьям»<span class="check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <div class="dropdown-item" onclick="selectCampaign('knigi', this)">«Книги и техника»<span class="check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
       </div>
     </div>
@@ -271,8 +269,8 @@
 <div class="action-bar">
   <a href="index.html" class="btn-back">Назад</a>
   <div class="action-bar-btns">
-    <button class="btn-transfer" id="btn-transfer" disabled>Передать вещи</button>
     <a href="#" class="btn-create">Создать объявление</a>
+    <button class="btn-transfer" id="btn-transfer" disabled>Передать вещи</button>
   </div>
   <div class="home-indicator"><div class="home-indicator-bar"></div></div>
 </div>
@@ -313,6 +311,18 @@ var currentCampaign = 'pomosh';
 var selectedAd = null;
 
 function init() {
+  // Read campaign from URL param
+  var params = new URLSearchParams(window.location.search);
+  var param = params.get('campaign');
+  if (param && CAMPAIGNS[param]) {
+    currentCampaign = param;
+    document.getElementById('campaign-value').textContent = CAMPAIGNS[param].label;
+    var items = document.querySelectorAll('#campaign-dropdown .dropdown-item');
+    items.forEach(function(item) {
+      var match = item.getAttribute('onclick').match(/'([^']+)'/);
+      if (match) item.classList.toggle('selected', match[1] === param);
+    });
+  }
   renderContent(currentCampaign);
   renderAdsDropdown(currentCampaign);
   document.addEventListener('click', function(e) {
@@ -331,9 +341,10 @@ function renderContent(key) {
 
 function renderAdsDropdown(key) {
   var ads = CAMPAIGNS[key].ads;
+  var checkSvg = '<span class="check-icon"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
   var html = '';
   for (var i = 0; i < ads.length; i++) {
-    html += '<div class="dropdown-item" data-index="' + i + '" onclick="selectAd(' + i + ', this)">' + ads[i] + '</div>';
+    html += '<div class="dropdown-item" data-index="' + i + '" onclick="selectAd(' + i + ', this)">' + ads[i] + checkSvg + '</div>';
   }
   document.getElementById('ads-dropdown').innerHTML = html;
 }

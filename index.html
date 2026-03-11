@@ -97,13 +97,16 @@
       gap: 24px;
     }
     .logo {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--black);
-      text-decoration: none;
+      display: flex;
+      align-items: center;
       flex-shrink: 0;
+      text-decoration: none;
     }
-    .logo span { color: var(--blue); }
+    .logo img {
+      height: 28px;
+      width: auto;
+      display: block;
+    }
     .header-nav {
       display: flex;
       gap: 20px;
@@ -1619,7 +1622,7 @@
     </div>
   </div>
   <div class="header-bottom" style="max-width:1260px;margin:0 auto;">
-    <a href="index.html" class="logo"><span>●</span> Avito</a>
+    <a href="index.html" class="logo"><img src="images/Logotype_Symbol+Text.svg" alt="Авито" /></a>
     <nav class="header-nav">
       <a href="#">#яПомогаю</a>
       <a href="#">Благотворительность</a>

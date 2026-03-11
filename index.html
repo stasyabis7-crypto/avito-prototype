@@ -1888,57 +1888,66 @@
     if (!raw) return;
     var data;
     try { data = JSON.parse(raw); } catch(e) { return; }
-
-    // Clear immediately so repeated page loads don't re-process
     sessionStorage.removeItem('reviewAds');
 
     var titles = data.titles || [];
     if (!titles.length) return;
 
-    var reviewTab = document.getElementById('tab-review');
+    var AD_META = {
+      'Жёлтый дождевик':              { img: 'images/card image 1.png', bg: '#f5f5f5', price: '700 ₽' },
+      'Микроволновка Samsung':         { img: 'images/card image 2.png', bg: '#007deb', price: '2 000 ₽' },
+      'Зимний комбинезон на мальчика': { img: 'images/card image 3.png', bg: '#f5f5f5', price: '2 000 ₽' },
+      'Электрический чайник Bosch':    { img: 'images/card image 4.png', bg: '#ffecc9', price: '900 ₽' },
+      'Чёрный худи oversize':          { img: 'images/card image 5.png', bg: '#f5f5f5', price: '525 ₽' },
+      'Синий дождевик':                { img: 'images/card image 6.png', bg: '#007deb', price: '700 ₽' }
+    };
+
+    var dot = '<span class="ads-dot"></span>';
+    var reviewContainer = document.getElementById('tab-review');
+    var tabs = document.querySelectorAll('.ads-tab');
 
     titles.forEach(function(adTitle) {
-      // Find the card in tab-unsold by title (only move if not already in review)
-      var alreadyInReview = false;
-      reviewTab.querySelectorAll('.ads-card-name').forEach(function(el) {
-        if (el.textContent.trim() === adTitle) alreadyInReview = true;
+      var meta = AD_META[adTitle];
+      if (!meta) return;
+
+      // Remove from tab-unsold
+      document.querySelectorAll('#tab-unsold .ads-card').forEach(function(card) {
+        var nameEl = card.querySelector('.ads-card-name');
+        if (nameEl && nameEl.textContent.trim() === adTitle) card.remove();
       });
-      if (alreadyInReview) return;
 
-      var unsoldCards = document.querySelectorAll('#tab-unsold .ads-card');
-      var foundCard = null;
-      unsoldCards.forEach(function(card) {
-        var name = card.querySelector('.ads-card-name');
-        if (name && name.textContent.trim() === adTitle) foundCard = card;
+      // Check not already in review
+      var alreadyThere = false;
+      reviewContainer.querySelectorAll('.ads-card-name').forEach(function(el) {
+        if (el.textContent.trim() === adTitle) alreadyThere = true;
       });
-      if (!foundCard) return;
+      if (alreadyThere) return;
 
-      // Remove from unsold
-      foundCard.parentNode.removeChild(foundCard);
-
-      // Update the card date
-      var dateEl = foundCard.querySelector('.ads-card-date');
-      if (dateEl) dateEl.textContent = 'На рассмотрении 1 день из 14';
-
-      // Add to review tab
-      reviewTab.appendChild(foundCard);
+      // Build and insert review card
+      var cardHTML = '<div class="ads-card">'
+        + '<div class="ads-card-img" style="background:' + meta.bg + ';">'
+        + '<img src="' + meta.img + '" alt="' + adTitle + '" />'
+        + '<div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span>' + dot + dot + dot + '</div>'
+        + '</div>'
+        + '<div class="ads-card-body">'
+        + '<div class="ads-card-name">' + adTitle + '</div>'
+        + '<div class="ads-card-date">На рассмотрении 1 день из 14</div>'
+        + '<div class="ads-card-price">' + meta.price + '</div>'
+        + '<button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button>'
+        + '</div></div>';
+      reviewContainer.insertAdjacentHTML('beforeend', cardHTML);
     });
 
     // Update counters
-    var unsoldCount = document.querySelectorAll('#tab-unsold .ads-card').length;
-    var reviewCount = document.querySelectorAll('#tab-review .ads-card').length;
-    document.querySelectorAll('.ads-tab')[0].querySelector('.ads-tab-counter').textContent = unsoldCount;
-    document.querySelectorAll('.ads-tab')[1].querySelector('.ads-tab-counter').textContent = reviewCount;
+    if (tabs[0]) tabs[0].querySelector('.ads-tab-counter').textContent = document.querySelectorAll('#tab-unsold .ads-card').length;
+    if (tabs[1]) tabs[1].querySelector('.ads-tab-counter').textContent = reviewContainer.querySelectorAll('.ads-card').length;
 
-    // If arriving from campaign page, switch to review tab and scroll
-    if (window.location.hash === '#ads-section') {
-      var reviewBtn = document.querySelectorAll('.ads-tab')[1];
-      switchAdsTab('review', reviewBtn);
-      setTimeout(function() {
-        var section = document.getElementById('ads-section');
-        if (section) section.scrollIntoView({ behavior: 'smooth' });
-      }, 100);
-    }
+    // Switch to review tab and scroll
+    if (tabs[1]) switchAdsTab('review', tabs[1]);
+    setTimeout(function() {
+      var section = document.getElementById('ads-section');
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   })();
 
   // Ads popup
@@ -1953,81 +1962,6 @@
     document.body.style.overflow = '';
   }
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAdsPopup(); });
-
-  // ── Read sessionStorage from campaign.html ──────────────────────────────
-  (function() {
-    var raw = sessionStorage.getItem('reviewAd');
-    if (!raw) {
-      // If arrived via #ads-section anchor, scroll there
-      if (window.location.hash === '#ads-section') {
-        var el = document.getElementById('ads-section');
-        if (el) setTimeout(function(){ el.scrollIntoView({behavior:'smooth'}); }, 100);
-      }
-      return;
-    }
-    sessionStorage.removeItem('reviewAd');
-    var data;
-    try { data = JSON.parse(raw); } catch(e) { return; }
-    var adTitle = data.title;
-
-    // Map of ad title → card image file and price and date
-    var AD_META = {
-      'Жёлтый дождевик':              { img: 'images/card image 1.png', bg: '#f5f5f5', price: '700 ₽' },
-      'Микроволновка Samsung':         { img: 'images/card image 2.png', bg: '#007deb', price: '2 000 ₽' },
-      'Зимний комбинезон на мальчика': { img: 'images/card image 3.png', bg: '#f5f5f5', price: '2 000 ₽' },
-      'Электрический чайник Bosch':    { img: 'images/card image 4.png', bg: '#ffecc9', price: '900 ₽' },
-      'Чёрный худи oversize':          { img: 'images/card image 5.png', bg: '#f5f5f5', price: '525 ₽' }
-    };
-
-    var meta = AD_META[adTitle];
-    if (!meta) return;
-
-    // 1. Remove card from tab-unsold
-    var unsoldCards = document.querySelectorAll('#tab-unsold .ads-card');
-    unsoldCards.forEach(function(card) {
-      var nameEl = card.querySelector('.ads-card-name');
-      if (nameEl && nameEl.textContent.trim() === adTitle) {
-        card.remove();
-      }
-    });
-
-    // Update unsold counter
-    var newUnsoldCount = document.querySelectorAll('#tab-unsold .ads-card').length;
-    var tabs = document.querySelectorAll('.ads-tab');
-    if (tabs[0]) {
-      tabs[0].querySelector('.ads-tab-counter').textContent = newUnsoldCount;
-    }
-
-    // 2. Build new review card
-    var dot = '<span class="ads-dot"></span>';
-    var cardHTML = '<div class="ads-card">'
-      + '<div class="ads-card-img" style="background:' + meta.bg + ';">'
-      + '<img src="' + meta.img + '" alt="' + adTitle + '" />'
-      + '<div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span>' + dot + dot + dot + '</div>'
-      + '</div>'
-      + '<div class="ads-card-body">'
-      + '<div class="ads-card-name">' + adTitle + '</div>'
-      + '<div class="ads-card-date">На рассмотрении 1 день из 14</div>'
-      + '<div class="ads-card-price">' + meta.price + '</div>'
-      + '<button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button>'
-      + '</div></div>';
-
-    var reviewContainer = document.getElementById('tab-review');
-    reviewContainer.insertAdjacentHTML('afterbegin', cardHTML);
-
-    // Update review counter
-    var newReviewCount = reviewContainer.querySelectorAll('.ads-card').length;
-    if (tabs[1]) {
-      tabs[1].querySelector('.ads-tab-counter').textContent = newReviewCount;
-    }
-
-    // 3. Switch to review tab and scroll
-    switchAdsTab('review', tabs[1]);
-    setTimeout(function() {
-      var section = document.getElementById('ads-section');
-      if (section) section.scrollIntoView({behavior: 'smooth'});
-    }, 100);
-  })();
 
   // Fix image load: if Figma asset fails, use emoji fallback
   document.querySelectorAll('.tab-panel-img img').forEach(img => {

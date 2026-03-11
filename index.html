@@ -1882,48 +1882,58 @@
     });
   }
 
-  // On load: check sessionStorage for a submitted ad and move it to review tab
+  // On load: check sessionStorage for submitted ads and move them to review tab
   (function() {
-    var raw = sessionStorage.getItem('reviewAd');
+    var raw = sessionStorage.getItem('reviewAds');
     if (!raw) return;
     var data;
     try { data = JSON.parse(raw); } catch(e) { return; }
-    var adTitle = data.title;
 
-    // Find the card in tab-unsold by title
-    var unsoldCards = document.querySelectorAll('#tab-unsold .ads-card');
-    var foundCard = null;
-    unsoldCards.forEach(function(card) {
-      var name = card.querySelector('.ads-card-name');
-      if (name && name.textContent.trim() === adTitle) foundCard = card;
-    });
-    if (!foundCard) return;
+    // Clear immediately so repeated page loads don't re-process
+    sessionStorage.removeItem('reviewAds');
 
-    // Remove from unsold
-    foundCard.parentNode.removeChild(foundCard);
+    var titles = data.titles || [];
+    if (!titles.length) return;
 
-    // Update unsold counter
-    var unsoldCount = document.querySelectorAll('#tab-unsold .ads-card').length;
-    document.querySelectorAll('.ads-tab')[0].querySelector('.ads-tab-counter').textContent = unsoldCount;
-
-    // Update the card date to "На рассмотрении 1 день из 14"
-    var dateEl = foundCard.querySelector('.ads-card-date');
-    if (dateEl) dateEl.textContent = 'На рассмотрении 1 день из 14';
-
-    // Add to review tab
     var reviewTab = document.getElementById('tab-review');
-    reviewTab.appendChild(foundCard);
 
-    // Update review counter
+    titles.forEach(function(adTitle) {
+      // Find the card in tab-unsold by title (only move if not already in review)
+      var alreadyInReview = false;
+      reviewTab.querySelectorAll('.ads-card-name').forEach(function(el) {
+        if (el.textContent.trim() === adTitle) alreadyInReview = true;
+      });
+      if (alreadyInReview) return;
+
+      var unsoldCards = document.querySelectorAll('#tab-unsold .ads-card');
+      var foundCard = null;
+      unsoldCards.forEach(function(card) {
+        var name = card.querySelector('.ads-card-name');
+        if (name && name.textContent.trim() === adTitle) foundCard = card;
+      });
+      if (!foundCard) return;
+
+      // Remove from unsold
+      foundCard.parentNode.removeChild(foundCard);
+
+      // Update the card date
+      var dateEl = foundCard.querySelector('.ads-card-date');
+      if (dateEl) dateEl.textContent = 'На рассмотрении 1 день из 14';
+
+      // Add to review tab
+      reviewTab.appendChild(foundCard);
+    });
+
+    // Update counters
+    var unsoldCount = document.querySelectorAll('#tab-unsold .ads-card').length;
     var reviewCount = document.querySelectorAll('#tab-review .ads-card').length;
+    document.querySelectorAll('.ads-tab')[0].querySelector('.ads-tab-counter').textContent = unsoldCount;
     document.querySelectorAll('.ads-tab')[1].querySelector('.ads-tab-counter').textContent = reviewCount;
 
-    // If arriving from campaign page (hash = #ads-section), scroll and activate review tab
+    // If arriving from campaign page, switch to review tab and scroll
     if (window.location.hash === '#ads-section') {
-      // Switch to review tab
       var reviewBtn = document.querySelectorAll('.ads-tab')[1];
       switchAdsTab('review', reviewBtn);
-      // Scroll after a tick
       setTimeout(function() {
         var section = document.getElementById('ads-section');
         if (section) section.scrollIntoView({ behavior: 'smooth' });

@@ -489,9 +489,9 @@ function fillDropdown(dropdownId, ownSelected) {
   var ads = CAMPAIGNS[currentCampaign].ads;
 
   // Exclude ads currently in "На рассмотрении" (stored in sessionStorage)
-  var reviewRaw = sessionStorage.getItem('reviewAd');
-  var reviewTitle = null;
-  if (reviewRaw) { try { reviewTitle = JSON.parse(reviewRaw).title; } catch(e) {} }
+  var reviewRaw = sessionStorage.getItem('reviewAds');
+  var reviewTitles = [];
+  if (reviewRaw) { try { reviewTitles = JSON.parse(reviewRaw).titles || []; } catch(e) {} }
 
   // Gather taken indices
   var taken = [];
@@ -506,7 +506,7 @@ function fillDropdown(dropdownId, ownSelected) {
   var html = '';
   for (var i = 0; i < ads.length; i++) {
     if (taken.indexOf(i) > -1) continue;
-    if (reviewTitle && ads[i] === reviewTitle) continue; // hide if already in review
+    if (reviewTitles.indexOf(ads[i]) > -1) continue; // hide if already in review
     var sel = (i === ownSelected);
     html += '<div class="dropdown-item' + (sel ? ' selected' : '') + '" data-idx="' + i + '">'
           + ads[i]
@@ -645,15 +645,24 @@ function updateTransferBtn() {
 document.getElementById('btn-transfer').addEventListener('click', function() {
   if (primarySelected === null) return;
   var c = CAMPAIGNS[currentCampaign];
-  var adTitle = c.ads[primarySelected];
+
+  // Collect all selected ad titles (primary + extra slots)
+  var selectedTitles = [];
+  if (primarySelected !== null) selectedTitles.push(c.ads[primarySelected]);
+  extraSlots.forEach(function(s) {
+    if (s.selected !== null) selectedTitles.push(c.ads[s.selected]);
+  });
+
   // Show success popup with campaign name
   document.getElementById('success-title').textContent =
     'Фонд получил ваше объявление для акции ' + c.label;
-  // Save to sessionStorage for index.html to pick up
-  sessionStorage.setItem('reviewAd', JSON.stringify({
-    title: adTitle,
+
+  // Save array to sessionStorage for index.html to pick up
+  sessionStorage.setItem('reviewAds', JSON.stringify({
+    titles: selectedTitles,
     campaign: c.label
   }));
+
   document.getElementById('success-backdrop').classList.add('visible');
   document.getElementById('success-modal').classList.add('visible');
   document.body.style.overflow = 'hidden';

@@ -748,6 +748,364 @@
     .share-btn img { width: 24px; height: 24px; object-fit: contain; display: block; }
     .share-btn:hover { opacity: 0.75; }
 
+    /* ADS SECTION */
+    .ads-tabs-wrap {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .ads-tabs {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+      position: relative;
+      z-index: 2;
+    }
+    .ads-tab {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0 0 18px 0;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ads-tab-text {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      color: #757575;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .ads-tab-counter {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 20px;
+      color: #757575;
+      white-space: nowrap;
+    }
+    .ads-tab.active .ads-tab-text { color: var(--black); }
+    .ads-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--black);
+      border-radius: 2px 2px 0 0;
+    }
+    .ads-tabs-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #dbdbd9;
+      z-index: 1;
+    }
+    .ads-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .ads-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .ads-chip {
+      background: var(--gray-bg);
+      border-radius: 16px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: var(--black);
+      white-space: nowrap;
+      cursor: default;
+      height: 52px;
+      display: flex;
+      align-items: center;
+    }
+    .ads-chip-active {
+      border: 2px solid var(--black);
+    }
+    .ads-search-wrap {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      width: 424px;
+      flex-shrink: 0;
+    }
+    .ads-search-input {
+      flex: 1;
+      background: var(--gray-bg);
+      border-radius: 16px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      padding: 15px 18px;
+      gap: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #757575;
+      cursor: default;
+    }
+    .ads-search-btn {
+      background: var(--black);
+      color: #fff;
+      border-radius: 16px;
+      height: 52px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      cursor: default;
+      flex-shrink: 0;
+    }
+    .ads-cards {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+    }
+    .ads-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .ads-card-img {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      position: relative;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .ads-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .ads-card-paginator {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.52);
+      border-radius: 10px;
+      padding: 3px;
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+    .ads-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      flex-shrink: 0;
+    }
+    .ads-dot-active {
+      width: 8px;
+      height: 4px;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .ads-card-body {
+      display: flex;
+      flex-direction: column;
+      padding: 0 4px;
+      flex: 1;
+    }
+    .ads-card-name {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: var(--black);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0;
+    }
+    .ads-card-date {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: #757575;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .ads-card-price {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 20px;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+    .ads-btn-choose {
+      background: var(--gray-bg);
+      border: none;
+      border-radius: 16px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: var(--black);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+      text-align: left;
+      display: inline-flex;
+      align-items: center;
+      height: 52px;
+      align-self: flex-start;
+      width: 100%;
+      justify-content: center;
+      margin-top: auto;
+    }
+    .ads-btn-choose:hover { opacity: 0.75; }
+
+    /* ADS POPUP */
+    .ads-popup-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 500;
+    }
+    .ads-popup-backdrop.visible { display: block; }
+    .ads-popup {
+      display: none;
+      position: fixed;
+      top: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 630px;
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 28px;
+      padding: 36px 40px 44px;
+      z-index: 501;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 24px rgba(0,0,0,0.12);
+    }
+    .ads-popup.visible { display: block; }
+    .ads-popup-close {
+      position: absolute;
+      top: 14px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: opacity 0.15s;
+    }
+    .ads-popup-close:hover { opacity: 0.6; }
+    .ads-popup-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 36px;
+      color: var(--black);
+      margin-bottom: 8px;
+      padding-right: 24px;
+    }
+    .ads-popup-subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .ads-popup-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ads-popup-step {
+      background: var(--gray-bg);
+      border-radius: 24px;
+      padding: 20px 24px 28px;
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      overflow: hidden;
+      min-height: 174px;
+    }
+    .ads-popup-step-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+    .ads-popup-step-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 22px;
+      color: var(--black);
+    }
+    .ads-popup-step-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      color: var(--black);
+    }
+    .ads-popup-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      padding: 15px;
+      border-radius: 16px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+      height: 52px;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+    .ads-popup-btn:hover { opacity: 0.75; }
+    .ads-popup-step-right {
+      width: 164px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      margin: -20px -24px -28px 0;
+    }
+    .ads-popup-step-right img {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 188px;
+      height: auto;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .ads-popup-img-1 img { width: 188px; bottom: -28px; right: -24px; }
+    .ads-popup-img-2 img { width: 188px; bottom: -28px; right: -24px; }
+    .ads-popup-img-3 img { width: 150px; bottom: 0; right: 0; }
+    .ads-popup-img-4 img { width: 188px; bottom: -28px; right: -24px; }
+
     /* FOOTER */
     .footer {
       background: var(--gray-bg);
@@ -1215,8 +1573,121 @@
   </div>
 </section>
 
+<!-- ADS SECTION -->
+<section class="section" id="ads-section">
+  <div class="page-content">
+    <h2 class="section-title" style="text-align:left;margin-bottom:16px;">Подарите вещам вторую жизнь</h2>
+    <p class="section-subtitle" style="text-align:left;margin-bottom:48px;">Эти объявления давно ждут покупателя.<br>Передайте вещи в благотворительную акцию, на переработку или в пункт приёма.</p>
+
+    <!-- Tabs -->
+    <div class="ads-tabs-wrap">
+      <div class="ads-tabs">
+        <button class="ads-tab active" onclick="switchAdsTab('unsold', this)">
+          <span class="ads-tab-text">Давно не продается</span><span class="ads-tab-counter">5</span>
+        </button>
+        <button class="ads-tab" onclick="switchAdsTab('review', this)">
+          <span class="ads-tab-text">На рассмотрении у фондов</span><span class="ads-tab-counter">1</span>
+        </button>
+        <button class="ads-tab" onclick="switchAdsTab('declined', this)">
+          <span class="ads-tab-text">Фонды пока не приняли</span><span class="ads-tab-counter">1</span>
+        </button>
+      </div>
+      <div class="ads-tabs-line"></div>
+    </div>
+
+    <!-- Filters (non-interactive) -->
+    <div class="ads-controls">
+      <div class="ads-chips">
+        <div class="ads-chip ads-chip-active">Все</div>
+        <div class="ads-chip">Одежда, обувь, аксессуары</div>
+        <div class="ads-chip">Техника</div>
+        <div class="ads-chip">Для дома</div>
+      </div>
+      <div class="ads-search-wrap">
+        <div class="ads-search-input">
+          <svg width="14" height="20" viewBox="0 0 14 20" fill="none" style="flex-shrink:0;margin-right:6px;"><circle cx="6" cy="6" r="5" stroke="#757575" stroke-width="1.5"/><path d="M10 10.5L13 14" stroke="#757575" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Поиск по объявлениям</span>
+        </div>
+        <div class="ads-search-btn">Найти</div>
+      </div>
+    </div>
+
+    <!-- Tab: Давно не продается -->
+    <div class="ads-cards" id="tab-unsold">
+      <div class="ads-card"><div class="ads-card-img" style="background:#f5f5f5;"><img src="https://www.figma.com/api/mcp/asset/ba9ee46a-42a9-4f10-86ea-10ac104e4346" alt="Жёлтый дождевик" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Жёлтый дождевик</div><div class="ads-card-date">Размещено 64 дня назад</div><div class="ads-card-price">700 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+      <div class="ads-card"><div class="ads-card-img" style="background:#007deb;"><img src="https://www.figma.com/api/mcp/asset/98dbbf2d-d40b-4df7-be1b-149213e59f51" alt="Микроволновка Samsung" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Микроволновка Samsung</div><div class="ads-card-date">Размещено 95 дней назад</div><div class="ads-card-price">2 000 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+      <div class="ads-card"><div class="ads-card-img" style="background:#f5f5f5;"><img src="https://www.figma.com/api/mcp/asset/d8fb2abc-53a8-4902-ac32-f4b34d98f8da" alt="Зимний комбинезон" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Зимний комбинезон на мальчика</div><div class="ads-card-date">Размещено 130 дней назад</div><div class="ads-card-price">2 000 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+      <div class="ads-card"><div class="ads-card-img" style="background:#ffecc9;"><img src="https://www.figma.com/api/mcp/asset/adcd8237-3082-4041-8bbf-6377a5474ffd" alt="Электрический чайник" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Электрический чайник Bosch</div><div class="ads-card-date">Размещено 150 дней назад</div><div class="ads-card-price">900 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+      <div class="ads-card"><div class="ads-card-img" style="background:#f5f5f5;"><img src="https://www.figma.com/api/mcp/asset/f78af2b3-f350-4252-8145-52990ef58612" alt="Чёрный худи" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Чёрный худи oversize</div><div class="ads-card-date">Размещено 72 дня назад</div><div class="ads-card-price">525 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+    </div>
+
+    <!-- Tab: На рассмотрении -->
+    <div class="ads-cards" id="tab-review" style="display:none;">
+      <div class="ads-card"><div class="ads-card-img" style="background:#007deb;"><img src="https://www.figma.com/api/mcp/asset/1adfdf12-eeeb-46f3-aa49-3c95b4eaa71f" alt="Синий дождевик" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Синий дождевик</div><div class="ads-card-date">На рассмотрении 3 дня из 14</div><div class="ads-card-price">700 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+    </div>
+
+    <!-- Tab: Фонды пока не приняли -->
+    <div class="ads-cards" id="tab-declined" style="display:none;">
+      <div class="ads-card"><div class="ads-card-img" style="background:#f5f5f5;"><img src="https://www.figma.com/api/mcp/asset/7ee95b5b-dd58-47d4-92a7-20f3dd3652ca" alt="Кашпо" /><div class="ads-card-paginator"><span class="ads-dot ads-dot-active"></span><span class="ads-dot"></span><span class="ads-dot"></span><span class="ads-dot"></span></div></div><div class="ads-card-body"><div class="ads-card-name">Кашпо</div><div class="ads-card-date">Фонды не забрали вещь</div><div class="ads-card-price">700 ₽</div><button class="ads-btn-choose" onclick="openAdsPopup()">Выбрать куда передать</button></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADS POPUP -->
+<div class="ads-popup-backdrop" id="ads-popup-backdrop" onclick="closeAdsPopup()"></div>
+<div class="ads-popup" id="ads-popup">
+  <button class="ads-popup-close" onclick="closeAdsPopup()">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <h2 class="ads-popup-title">Передать вещь с пользой</h2>
+  <p class="ads-popup-subtitle">Выберите, как вы хотите передать эту вещь. Мы поможем ей найти нового владельца.</p>
+  <div class="ads-popup-steps">
+    <div class="ads-popup-step">
+      <div class="ads-popup-step-left">
+        <div class="ads-popup-step-title">Передать в благотворительную акцию</div>
+        <div class="ads-popup-step-desc">Мы подобрали акции, куда может подойти ваша вещь.</div>
+        <button class="ads-popup-btn" onclick="closeAdsPopup(); setTimeout(function(){ document.getElementById('campaigns-section').scrollIntoView({behavior:'smooth'}); }, 200);">Посмотреть акции</button>
+      </div>
+      <div class="ads-popup-step-right ads-popup-img-1">
+        <img src="https://www.figma.com/api/mcp/asset/d8a52176-56dd-4406-b1ca-089f5b884702" alt="" />
+      </div>
+    </div>
+    <div class="ads-popup-step">
+      <div class="ads-popup-step-left">
+        <div class="ads-popup-step-title">Отнести в пункт приёма вещей</div>
+        <div class="ads-popup-step-desc">Передайте вещь в ближайший пункт — её передадут людям, которым она может пригодиться.</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="ads-popup-btn">Найти пункт приёма</a>
+      </div>
+      <div class="ads-popup-step-right ads-popup-img-2">
+        <img src="https://www.figma.com/api/mcp/asset/f47ac1f8-58c9-49e8-9bff-07f30db2aeb5" alt="" />
+      </div>
+    </div>
+    <div class="ads-popup-step">
+      <div class="ads-popup-step-left">
+        <div class="ads-popup-step-title">Сдать на переработку</div>
+        <div class="ads-popup-step-desc">Если вещь уже не пригодна для использования, её можно отправить на переработку.</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="ads-popup-btn">Найти пункт переработки</a>
+      </div>
+      <div class="ads-popup-step-right ads-popup-img-3">
+        <img src="https://www.figma.com/api/mcp/asset/aaa17697-1f30-42f9-aef9-45511f9deff8" alt="" />
+      </div>
+    </div>
+    <div class="ads-popup-step">
+      <div class="ads-popup-step-left">
+        <div class="ads-popup-step-title">Заказать вывоз вещей</div>
+        <div class="ads-popup-step-desc">Если вещей много или неудобно везти их самостоятельно, можно заказать вывоз на дом.</div>
+        <a href="https://www.avito.ru/avito-care/donate-things?shareThingsOpen=true" target="_blank" class="ads-popup-btn">Оставить заявку</a>
+      </div>
+      <div class="ads-popup-step-right ads-popup-img-4">
+        <img src="https://www.figma.com/api/mcp/asset/24f5a078-65a5-481c-8cb1-4cc2815c0c0d" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- CAMPAIGNS -->
-<section class="section">
+<section class="section" id="campaigns-section">
   <div class="page-content">
     <div class="section-header-with-subtitle">
       <h2 class="section-title">Активные акции</h2>
@@ -1387,6 +1858,29 @@
     document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+
+  // Ads tabs
+  function switchAdsTab(tab, btn) {
+    document.querySelectorAll('.ads-tab').forEach(function(t) { t.classList.remove('active'); });
+    btn.classList.add('active');
+    ['unsold','review','declined'].forEach(function(id) {
+      var el = document.getElementById('tab-' + id);
+      if (el) el.style.display = id === tab ? 'grid' : 'none';
+    });
+  }
+
+  // Ads popup
+  function openAdsPopup() {
+    document.getElementById('ads-popup-backdrop').classList.add('visible');
+    document.getElementById('ads-popup').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAdsPopup() {
+    document.getElementById('ads-popup-backdrop').classList.remove('visible');
+    document.getElementById('ads-popup').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAdsPopup(); });
 
   // Fix image load: if Figma asset fails, use emoji fallback
   document.querySelectorAll('.tab-panel-img img').forEach(img => {

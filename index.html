@@ -1409,6 +1409,72 @@
       .footer { padding: 32px 26px; margin-top: 48px; }
     }
 
+    /* AFTER POSTING — new 2-card layout */
+    .after-cards-new {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .after-card-new {
+      background: #fff;
+      border-radius: 28px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 24px rgba(0,0,0,0.12);
+      padding: 20px 24px 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 192px;
+    }
+    .after-card-new-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 200px;
+      flex-shrink: 0;
+    }
+    .after-card-new-title {
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 28px;
+      color: var(--black);
+    }
+    .after-card-new-desc {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 22px;
+      color: var(--black);
+      margin-top: 4px;
+    }
+    .after-card-new-btns {
+      display: flex;
+      gap: 6px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .after-card-new-img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 200px;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .after-card-new-img img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: right bottom;
+      display: block;
+    }
+
     /* Hero image placeholder */
     /* Campaign page iframe */
     .section-header-with-subtitle {
@@ -1539,7 +1605,7 @@
 <section class="section" id="ads-section">
   <div class="page-content">
     <h2 class="section-title">Подарите вашим вещам вторую жизнь</h2>
-    <p class="section-subtitle">Эти объявления давно ждут покупателя.<br>Передайте вещи в благотворительную акцию, на переработку или в пункт приёма.</p>
+    <p class="section-subtitle">Мы нашли вещи из ваших объявлений, которые долго ждут покупателя. Их можно передать в открытые сборы вещей, на переработку или в пункт приёма.</p>
 
     <!-- Tabs -->
     <div class="ads-tabs-wrap">
@@ -1703,59 +1769,12 @@
   </div>
 </section>
 
-<!-- INFO BANNER -->
-<section class="section">
-  <div class="page-content">
-    <div class="info-banner">
-      <div class="info-banner-text">
-        <div class="info-banner-title">Объявление не будет видно в поиске</div>
-        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
-        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
-      </div>
-      <div class="info-banner-deco">
-        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AFTER POSTING -->
-<section class="section">
-  <div class="page-content">
-    <h2 class="section-title">Что происходит после<br>размещения объявления</h2>
-    <div class="after-cards">
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-1" src="images/after1-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Организации могут ответить не сразу</div>
-        <div class="after-card-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и&nbsp;откликнулись</div>
-      </div>
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-2" src="images/after2-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Если вам пишут не только фонды</div>
-        <div class="after-card-desc">Вы сами решаете, кому передать вещь. Выбирайте того, кому доверяете и кому она принесёт больше&nbsp;пользы</div>
-      </div>
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-3" src="images/after3-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Если пока никто<br>не откликнулся</div>
-        <div class="after-card-desc">Такое тоже бывает. В этом случае вы всегда можете передать вещь другим удобным для&nbsp;вас&nbsp;способом</div>
-        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary" style="margin-top:8px;">Найти пункт</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CAMPAIGNS -->
 <section class="section" id="campaigns-section">
   <div class="page-content">
     <div class="section-header-with-subtitle">
-      <h2 class="section-title">Активные акции</h2>
-      <p class="section-subtitle">Если сейчас идёт тематическая акция, вы можете сразу<br>передать нужные вещи по&nbsp;её&nbsp;правилам</p>
+      <h2 class="section-title">Открытые сборы вещей</h2>
+      <p class="section-subtitle">Посмотрите текущие сборы и передайте вещи, которые сейчас особенно нужны</p>
     </div>
     <div class="campaign-cards">
       <!-- Campaign 1: Помощь семьям -->
@@ -1795,6 +1814,52 @@
           <div class="campaign-desc">Подборка акций для вещей, которые чаще всего нужны фондам и партнёрам</div>
           <a href="campaign.html?campaign=knigi" class="btn-primary-sm" style="pointer-events:all;">Передать вещи</a>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER POSTING -->
+<section class="section">
+  <div class="page-content">
+    <h2 class="section-title">Что происходит после<br>размещения объявления</h2>
+    <div class="after-cards-new">
+      <div class="after-card-new">
+        <div class="after-card-new-text">
+          <div class="after-card-new-title">Организации могут ответить не сразу</div>
+          <div class="after-card-new-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и откликнулись</div>
+        </div>
+        <div class="after-card-new-img">
+          <img loading="lazy" decoding="async" src="images/banner new 1.png" alt="" />
+        </div>
+      </div>
+      <div class="after-card-new">
+        <div class="after-card-new-text">
+          <div class="after-card-new-title">Если пока никто не откликнулся</div>
+          <div class="after-card-new-desc">В этом случае вы можете передать вещь в пункт приёма или на переработку</div>
+        </div>
+        <div class="after-card-new-btns">
+          <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary">Найти пункт</a>
+        </div>
+        <div class="after-card-new-img">
+          <img loading="lazy" decoding="async" src="images/banner new 2.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BANNER -->
+<section class="section">
+  <div class="page-content">
+    <div class="info-banner" style="background:#f5f5f5;">
+      <div class="info-banner-text">
+        <div class="info-banner-title">Объявление не будет видно в поиске</div>
+        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
+        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
+      </div>
+      <div class="info-banner-deco">
+        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
       </div>
     </div>
   </div>

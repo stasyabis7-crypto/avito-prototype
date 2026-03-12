@@ -272,94 +272,69 @@
     }
 
     /* HOW TO GIVE — TABS */
-    .how-tabs {
-      display: flex;
-      gap: 32px;
-      align-items: flex-start;
+    /* HOW TO GIVE — BANNER GRID */
+    .htg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
     }
-    .tabs-list {
-      flex: 1;
+    .htg-banner {
+      background: #f5f5f5;
+      border-radius: 28px;
+      padding: 20px 24px 28px;
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: 0;
-    }
-    .tab-item {
-      border: none;
-      background: none;
-      cursor: pointer;
-      text-align: left;
-      padding: 0;
-      width: 100%;
-    }
-    .tab-header {
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 20px 0;
+      min-height: 192px;
     }
-    .tab-item + .tab-item .tab-header {
-      border-top: 1px solid #e8e8e8;
+    .htg-text {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-right: 200px;
+      flex-shrink: 0;
     }
-    .tab-title {
+    .htg-title {
       font-size: 24px;
       font-weight: 800;
       line-height: 28px;
       color: var(--black);
     }
-    .tab-arrow {
-      flex-shrink: 0;
-      margin-left: 16px;
-      width: 24px;
-      height: 24px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .tab-arrow svg { display: none; }
-    .tab-arrow::before,
-    .tab-arrow::after {
-      content: '';
-      position: absolute;
-      background: var(--black);
-      border-radius: 2px;
-      transition: transform 0.2s, opacity 0.2s;
-    }
-    .tab-arrow::before { width: 14px; height: 2px; }
-    .tab-arrow::after  { width: 2px; height: 14px; }
-    .tab-item.active .tab-arrow { visibility: hidden; }
-    .tab-item.active .tab-header { padding-bottom: 0; }
-    .tab-content {
-      display: none;
-      padding: 4px 0 24px;
-      border-bottom: 1px solid #e8e8e8;
-    }
-    .tab-item.active .tab-content { display: block; }
-    .tab-item:last-child.active .tab-content { border-bottom: none; }
-    .tab-item.active .tab-title { color: var(--black); }
-    .tab-desc {
+    .htg-desc {
       font-size: 15px;
       font-weight: 500;
       line-height: 22px;
       color: var(--black);
-      margin-top: 0;
-      margin-bottom: 16px;
     }
-    .tab-btns {
+    .htg-btns {
       display: flex;
       gap: 6px;
       flex-wrap: wrap;
+      margin-top: 16px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
     }
-
-    /* TAB IMAGE PANEL */
-    .tabs-image-panel {
-      flex: 1;
-      border-radius: var(--radius-28);
+    .htg-img-wrap {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 200px;
+      height: 100%;
+      pointer-events: none;
       overflow: hidden;
-      min-height: 450px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+    .htg-img-wrap img {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: right bottom;
+      display: block;
     }
 
     /* HOW IT WORKS */
@@ -1252,67 +1227,20 @@
         margin-bottom: 24px;
       }
 
-      /* ── 4. КАК ПЕРЕДАТЬ ВЕЩИ — accordion ── */
-      .how-tabs {
-        flex-direction: column;
-        gap: 0;
-        background: none;
-        border-radius: 0;
-        box-shadow: none;
-        padding: 0;
+      /* ── 4. КАК ПЕРЕДАТЬ ВЕЩИ — баннеры ── */
+      .htg-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
-      .tabs-image-panel { display: none !important; }
-      .tab-item {
-        border-radius: 0;
-        border-bottom: 1px solid #e8e8e8;
+      .htg-banner {
+        min-height: 160px;
+        padding: 16px 16px 20px;
       }
-      .tab-item:first-child { border-top: 1px solid #e8e8e8; }
-      .tab-header {
-        padding: 20px 0;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+      .htg-text {
+        padding-right: 120px;
       }
-      .tab-title {
-        font-size: 21px;
-        font-weight: 800;
-        line-height: 26px;
-        color: #000;
-        flex: 1;
-      }
-      .tab-arrow {
-        width: 14px;
-        height: 14px;
-        flex-shrink: 0;
-        margin-left: 12px;
-        transition: transform 0.2s;
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-      }
-      .tab-item.active .tab-arrow { transform: rotate(180deg); }
-      .tab-content {
-        display: none;
-        padding: 0 0 24px;
-        border-top: none;
-      }
-      .tab-item.active .tab-content { display: block; }
-      .tab-panel-img {
-        width: 100%;
-        height: 240px;
-        border-radius: 28px;
-        overflow: hidden;
-        margin-bottom: 16px;
-        object-fit: cover;
-      }
-      .tab-panel-text { padding: 0; }
-      .tab-panel-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
-      .tab-panel-desc { font-size: 15px; line-height: 22px; margin-bottom: 16px; }
-      .tab-panel-btns { display: flex; flex-direction: column; gap: 6px; }
-      .tab-panel-btn { display: flex; align-items: center; justify-content: center; width: 100%; height: 52px; font-size: 15px; font-weight: 500; border-radius: 16px; border: none; cursor: pointer; text-decoration: none; }
-      .tab-panel-btn-primary { background: #141414; color: #fff; }
-      .tab-panel-btn-secondary { background: var(--gray-bg); color: #000; }
+      .htg-title { font-size: 18px; line-height: 22px; }
+      .htg-img-wrap { width: 120px; }
 
       /* ── 5. КАК ЭТО РАБОТАЕТ — horizontal scroll ── */
       .cards-grid-3 {
@@ -1478,137 +1406,11 @@
       .footer { padding: 32px 26px; margin-top: 48px; }
     }
 
-    /* Mobile tab image (shown inside accordion on mobile) */
-    .tab-mobile-img {
-      display: none;
-    }
-    @media (max-width: 767px) {
-      .tab-mobile-img {
-        display: block;
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-        border-radius: 20px;
-        margin-bottom: 16px;
-      }
-    }
-    .illo-yapomogayu {
-      background: linear-gradient(135deg, #e3f7ff, #c8e8ff);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      font-weight: 800;
-      color: #0099cc;
-      padding: 40px;
-    }
-    .illo-punkt {
-      background: linear-gradient(135deg, #f4eefe, #e3d4fc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 48px;
-    }
-    .illo-vivoz {
-      background: linear-gradient(90deg, #E3F7FF 10%, #F4EEFE 90%);
-    }
-    .illo-recycle {
-      background: linear-gradient(90deg, #F4EEFE 10%, #E3F7FF 90%);
-    }
-    /* TAB 2 — Вывоз: по центру снизу */
-    #tab-img-2 .tab-illo-vivoz {
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 470px;
-      height: 258px;
-      object-fit: cover;
-      pointer-events: none;
-    }
-    #tab-img-2 {
-      overflow: hidden;
-    }
-    /* TAB 3 — Переработка: по центру снизу */
-    #tab-img-3 .tab-illo-recycle {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50%;
-      height: auto;
-      object-fit: contain;
-      pointer-events: none;
-    }
-
     /* Hero image placeholder */
     /* Campaign page iframe */
     .section-header-with-subtitle {
       text-align: center;
       margin-bottom: 32px;
-    }
-
-    /* Tab panel images */
-    .tab-panel-img {
-      width: 100%;
-      height: 100%;
-      min-height: 450px;
-      border-radius: var(--radius-28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-    /* TAB 0 — #яПомогаю: по центру снизу, 72% высоты */
-    #tab-img-0 .tab-illo {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: auto;
-      max-width: 80%;
-      height: 72%;
-      object-fit: contain;
-      object-position: bottom center;
-      pointer-events: none;
-    }
-    /* TAB 1 — Пункт приёма: по центру снизу, 95% ширины */
-    #tab-img-1 {
-      overflow: visible;
-    }
-    #tab-img-1 .tab-illo {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 95%;
-      height: auto;
-      max-width: 95%;
-      object-fit: contain;
-      pointer-events: none;
-    }
-    /* TAB 1 — Пункт приёма (альт. класс) */
-    .tab-illo-punkt {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: calc(-14.8% + 60px);
-      width: 75.6%;
-      height: auto;
-      pointer-events: none;
-    }
-    .illo-yapomogayu {
-      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
-    }
-    .illo-punkt {
-      background: linear-gradient(90deg, #FFEBEC 0%, #F4EEFE 100%);
-    }
-    .illo-vivoz {
-      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
-    }
-    .illo-recycle {
-      background: linear-gradient(90deg, #E3F7FF 0%, #F4EEFE 100%);
     }
   </style>
 </head>
@@ -1665,88 +1467,67 @@
     <h2 class="section-title">Как передать вещи</h2>
     <p class="section-subtitle">Выберите удобный сценарий: разместить объявление,<br>отнести вещи самому или заказать вывоз вещей прямо&nbsp;из&nbsp;дома</p>
 
-    <div class="how-tabs">
-      <!-- TABS LIST -->
-      <div class="tabs-list">
-        <!-- Tab 1: Через #ЯПомогаю -->
-        <div class="tab-item active" onclick="switchTab(0)">
-          <div class="tab-header">
-            <span class="tab-title">Передать фондам через Авито доставку</span>
-            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-          <div class="tab-content">
-            <img class="tab-mobile-img" src="images/tab1-yapomogayu.png" alt="#яПомогаю" />
-            <p class="tab-desc">Разместите объявление, и его увидят организации и люди, которым нужна&nbsp;помощь</p>
-            <div class="tab-btns">
-              <span class="btn-primary-sm" style="cursor:default; pointer-events:none;">Создать объявление</span>
-              <a href="#how-it-works" class="btn-secondary">Как это работает</a>
-            </div>
-          </div>
-        </div>
+    <div class="htg-grid">
 
-        <!-- Tab 2: Отнести в пункт -->
-        <div class="tab-item" onclick="switchTab(1)">
-          <div class="tab-header">
-            <span class="tab-title">Отнести в пункт приёма вещей</span>
-            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-          <div class="tab-content">
-            <img class="tab-mobile-img" src="images/tab2-punkt.png" alt="Пункт приёма" />
-            <p class="tab-desc">Найдите ближайший пункт приёма вещей и передайте&nbsp;их&nbsp;лично</p>
-            <div class="tab-btns">
-              <a href="https://www.avito.ru/avito-care/recyclemap?&filter=5" target="_blank" class="btn-primary-sm">Открыть карту</a>
-              <a href="#what-to-give" class="btn-secondary">Узнать, что принимают</a>
-            </div>
-          </div>
+      <!-- Баннер 1: Передать фондам -->
+      <div class="htg-banner">
+        <div class="htg-text">
+          <div class="htg-title">Передать фондам через Авито доставку</div>
+          <div class="htg-desc">Разместите объявление с вещами для передачи.<br>Его увидят те, кому они могут пригодиться.</div>
         </div>
-
-        <!-- Tab 3: Заказать вывоз -->
-        <div class="tab-item" onclick="switchTab(2)">
-          <div class="tab-header">
-            <span class="tab-title">Заказать вывоз вещей на дом</span>
-            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-          <div class="tab-content">
-            <img class="tab-mobile-img" src="images/tab3-vivoz.png" alt="Вывоз" />
-            <p class="tab-desc">Партнёры в Москве и Владимире бесплатно заберут вещи из дома</p>
-            <div class="tab-btns">
-              <a href="https://www.avito.ru/avito-care/donate-things?shareThingsOpen=true" target="_blank" class="btn-primary-sm">Оставить заявку</a>
-              <a href="https://www.avito.ru/avito-care/donate-things?from=/avito-care/lizaalert#:~:text=%D0%97%D0%B0%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D1%8B%D0%B2%D0%BE%D0%B7%20%D0%B2%D0%B5%D1%89%D0%B5%D0%B9" target="_blank" class="btn-secondary">Партнёры</a>
-            </div>
-          </div>
+        <div class="htg-btns">
+          <span class="btn-primary-sm" style="cursor:default; pointer-events:none;">Создать объявление</span>
+          <a href="#how-it-works" class="btn-secondary">Как это работает</a>
         </div>
-
-        <!-- Tab 4: Сдать на переработку -->
-        <div class="tab-item" onclick="switchTab(3)">
-          <div class="tab-header">
-            <span class="tab-title">Сдать на переработку</span>
-            <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-          <div class="tab-content">
-            <img class="tab-mobile-img" src="images/tab4-recycle.png" alt="Переработка" />
-            <p class="tab-desc">Передайте вещи, не подходящие для повторного использования, на&nbsp;переработку</p>
-            <div class="tab-btns">
-              <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
-            </div>
-          </div>
+        <div class="htg-img-wrap">
+          <img loading="lazy" decoding="async" src="images/photo new 1.png" alt="" />
         </div>
       </div>
 
-      <!-- PANEL IMAGE -->
-      <div class="tabs-image-panel" id="tab-image-panel">
-        <div class="tab-panel-img illo-yapomogayu" id="tab-img-0">
-          <img loading="lazy" decoding="async" class="tab-illo" src="images/tab1-yapomogayu.png" alt="#яПомогаю" />
+      <!-- Баннер 2: Отнести в пункт приёма -->
+      <div class="htg-banner">
+        <div class="htg-text">
+          <div class="htg-title">Отнести в пункт приёма вещей</div>
+          <div class="htg-desc">Передайте вещь в ближайший пункт — её передадут<br>людям, которым она может пригодиться.</div>
         </div>
-        <div class="tab-panel-img illo-punkt" id="tab-img-1" style="display:none;">
-          <img loading="lazy" decoding="async" class="tab-illo-punkt" src="images/tab2-punkt.png" alt="" />
+        <div class="htg-btns">
+          <a href="https://www.avito.ru/avito-care/recyclemap?&filter=5" target="_blank" class="btn-secondary">Открыть карту</a>
+          <a href="#what-to-give" class="btn-secondary">Узнать, что принимают</a>
         </div>
-        <div class="tab-panel-img illo-vivoz" id="tab-img-2" style="display:none;">
-          <img loading="lazy" decoding="async" class="tab-illo-vivoz" src="images/tab3-vivoz.png" alt="" />
-        </div>
-        <div class="tab-panel-img illo-recycle" id="tab-img-3" style="display:none;">
-          <img loading="lazy" decoding="async" class="tab-illo-recycle" src="images/tab4-recycle.png" alt="" />
+        <div class="htg-img-wrap">
+          <img loading="lazy" decoding="async" src="images/photo new 2.png" alt="" />
         </div>
       </div>
+
+      <!-- Баннер 3: Заказать вывоз -->
+      <div class="htg-banner">
+        <div class="htg-text">
+          <div class="htg-title">Заказать вывоз вещей</div>
+          <div class="htg-desc">Партнёры в Москве и Владимире бесплатно<br>заберут вещи из дома</div>
+        </div>
+        <div class="htg-btns">
+          <a href="https://www.avito.ru/avito-care/donate-things?shareThingsOpen=true" target="_blank" class="btn-secondary">Оставить заявку</a>
+          <a href="https://www.avito.ru/avito-care/donate-things?from=/avito-care/lizaalert#:~:text=%D0%97%D0%B0%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D1%8B%D0%B2%D0%BE%D0%B7%20%D0%B2%D0%B5%D1%89%D0%B5%D0%B9" target="_blank" class="btn-secondary">Партнёры</a>
+        </div>
+        <div class="htg-img-wrap">
+          <img loading="lazy" decoding="async" src="images/photo new 3.png" alt="" />
+        </div>
+      </div>
+
+      <!-- Баннер 4: Сдать на переработку -->
+      <div class="htg-banner">
+        <div class="htg-text">
+          <div class="htg-title">Сдать на переработку</div>
+          <div class="htg-desc">Если вещь уже не пригодна для использования,<br>её можно отправить на переработку.</div>
+        </div>
+        <div class="htg-btns">
+          <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
+        </div>
+        <div class="htg-img-wrap">
+          <img loading="lazy" decoding="async" src="images/photo new 4.png" alt="" />
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

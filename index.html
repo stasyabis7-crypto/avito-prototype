@@ -316,16 +316,18 @@
       align-items: center;
       justify-content: center;
     }
+    .tab-arrow svg { display: none; }
     .tab-arrow::before,
     .tab-arrow::after {
       content: '';
       position: absolute;
       background: var(--black);
       border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
     }
     .tab-arrow::before { width: 14px; height: 2px; }
     .tab-arrow::after  { width: 2px; height: 14px; }
-    .tab-item.active .tab-arrow { display: none; }
+    .tab-item.active .tab-arrow { visibility: hidden; }
     .tab-item.active .tab-header { padding-bottom: 0; }
     .tab-content {
       display: none;
@@ -1661,14 +1663,14 @@
         <!-- Tab 1: Через #ЯПомогаю -->
         <div class="tab-item active" onclick="switchTab(0)">
           <div class="tab-header">
-            <span class="tab-title">Через #ЯПомогаю</span>
+            <span class="tab-title">Передать фондам через Авито доставку</span>
             <span class="tab-arrow"><svg width="14" height="14" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
           <div class="tab-content">
             <img class="tab-mobile-img" src="images/tab1-yapomogayu.png" alt="#яПомогаю" />
             <p class="tab-desc">Разместите объявление, и его увидят организации и люди, которым нужна&nbsp;помощь</p>
             <div class="tab-btns">
-              <a href="#" class="btn-primary-sm">Создать объявление</a>
+              <span class="btn-primary-sm" style="cursor:default; pointer-events:none;">Создать объявление</span>
               <a href="#how-it-works" class="btn-secondary">Как это работает</a>
             </div>
           </div>
@@ -1684,7 +1686,7 @@
             <img class="tab-mobile-img" src="images/tab2-punkt.png" alt="Пункт приёма" />
             <p class="tab-desc">Найдите ближайший пункт приёма вещей и передайте&nbsp;их&nbsp;лично</p>
             <div class="tab-btns">
-              <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-primary-sm">Открыть карту</a>
+              <a href="https://www.avito.ru/avito-care/recyclemap?&filter=5" target="_blank" class="btn-primary-sm">Открыть карту</a>
               <a href="#what-to-give" class="btn-secondary">Узнать, что принимают</a>
             </div>
           </div>
@@ -1698,7 +1700,7 @@
           </div>
           <div class="tab-content">
             <img class="tab-mobile-img" src="images/tab3-vivoz.png" alt="Вывоз" />
-            <p class="tab-desc">Оставьте заявку, и партнёры заберут вещи прямо из&nbsp;вашего&nbsp;дома</p>
+            <p class="tab-desc">Партнёры в Москве и Владимире бесплатно заберут вещи из дома</p>
             <div class="tab-btns">
               <a href="https://www.avito.ru/avito-care/donate-things?shareThingsOpen=true" target="_blank" class="btn-primary-sm">Оставить заявку</a>
               <a href="https://www.avito.ru/avito-care/donate-things?from=/avito-care/lizaalert#:~:text=%D0%97%D0%B0%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D0%B2%D1%8B%D0%B2%D0%BE%D0%B7%20%D0%B2%D0%B5%D1%89%D0%B5%D0%B9" target="_blank" class="btn-secondary">Партнёры</a>
@@ -1716,7 +1718,7 @@
             <img class="tab-mobile-img" src="images/tab4-recycle.png" alt="Переработка" />
             <p class="tab-desc">Передайте вещи, не подходящие для повторного использования, на&nbsp;переработку</p>
             <div class="tab-btns">
-              <a href="https://www.avito.ru/avito-care/recyclemap?lat=56.32688699999307&long=44.00598600000001&zoom=15" target="_blank" class="btn-secondary">Найти пункт</a>
+              <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
             </div>
           </div>
         </div>
@@ -1741,112 +1743,10 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works" class="section">
-  <div class="page-content">
-    <h2 class="section-title">Как это работает</h2>
-    <div class="cards-grid-3">
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step1-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23e3f7ff%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>📋</text></svg>'" />
-        <div class="step-title">Выберите способ передачи</div>
-        <div class="step-desc">Через объявление #яПомогаю, пункт приёма или вывоз вещей</div>
-      </div>
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step2-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23c8e6c9%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>🛒</text></svg>'" />
-        <div class="step-title">Передайте вещи</div>
-        <div class="step-desc">Разместите объявление или передайте вещи через сервис</div>
-      </div>
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step3-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23f4eefe%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>✅</text></svg>'" />
-        <div class="step-title">Мы найдём получателя</div>
-        <div class="step-desc">Вещи передаются людям или благотворительным организациям</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT TO GIVE -->
-<section id="what-to-give" class="section">
-  <div class="page-content">
-    <h2 class="section-title">Что можно передать</h2>
-    <div class="what-cards">
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-0" src="images/what1-things.png" alt="Вещи общего пользования" />
-        </div>
-        <div class="what-card-title">Вещи общего пользования</div>
-        <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем&nbsp;состоянии</div>
-      </div>
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-1" src="images/what2-quality.png" alt="Качественные вещи" />
-        </div>
-        <div class="what-card-title">Качественные вещи</div>
-        <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего&nbsp;использования</div>
-      </div>
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-2" src="images/what3-recycle.png" alt="Если вещь не подходит" />
-        </div>
-        <div class="what-card-title">Если вещь не подходит</div>
-        <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на&nbsp;переработку</div>
-        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary">Найти пункт</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INFO BANNER -->
-<section class="section">
-  <div class="page-content">
-    <div class="info-banner">
-      <div class="info-banner-text">
-        <div class="info-banner-title">Объявление не будет видно в поиске</div>
-        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
-        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
-      </div>
-      <div class="info-banner-deco">
-        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AFTER POSTING -->
-<section class="section">
-  <div class="page-content">
-    <h2 class="section-title">Что происходит после<br>размещения объявления</h2>
-    <div class="after-cards">
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-1" src="images/after1-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Организации могут ответить не сразу</div>
-        <div class="after-card-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и&nbsp;откликнулись</div>
-      </div>
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-2" src="images/after2-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Если вам пишут не только фонды</div>
-        <div class="after-card-desc">Вы сами решаете, кому передать вещь. Выбирайте того, кому доверяете и кому она принесёт больше&nbsp;пользы</div>
-      </div>
-      <div class="after-card">
-        <div class="after-card-icon-wrap">
-          <img loading="lazy" decoding="async" class="after-card-icon-3" src="images/after3-icon.png" alt="" />
-        </div>
-        <div class="after-card-title">Если пока никто<br>не откликнулся</div>
-        <div class="after-card-desc">Такое тоже бывает. В этом случае вы всегда можете передать вещь другим удобным для&nbsp;вас&nbsp;способом</div>
-        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary" style="margin-top:8px;">Найти пункт</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ADS SECTION -->
 <section class="section" id="ads-section">
   <div class="page-content">
-    <h2 class="section-title">Подарите вещам вторую жизнь</h2>
+    <h2 class="section-title">Подарите вашим вещам вторую жизнь</h2>
     <p class="section-subtitle">Эти объявления давно ждут покупателя.<br>Передайте вещи в благотворительную акцию, на переработку или в пункт приёма.</p>
 
     <!-- Tabs -->
@@ -1955,6 +1855,108 @@
     </div>
   </div>
 </div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section">
+  <div class="page-content">
+    <h2 class="section-title">Как это работает</h2>
+    <div class="cards-grid-3">
+      <div class="step-card">
+        <img loading="lazy" decoding="async" class="step-icon" src="images/step1-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23e3f7ff%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>📋</text></svg>'" />
+        <div class="step-title">Выберите способ передачи</div>
+        <div class="step-desc">Через объявление #яПомогаю, пункт приёма или вывоз вещей</div>
+      </div>
+      <div class="step-card">
+        <img loading="lazy" decoding="async" class="step-icon" src="images/step2-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23c8e6c9%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>🛒</text></svg>'" />
+        <div class="step-title">Передайте вещи</div>
+        <div class="step-desc">Разместите объявление или передайте вещи через сервис</div>
+      </div>
+      <div class="step-card">
+        <img loading="lazy" decoding="async" class="step-icon" src="images/step3-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23f4eefe%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>✅</text></svg>'" />
+        <div class="step-title">Мы найдём получателя</div>
+        <div class="step-desc">Вещи передаются людям или благотворительным организациям</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT TO GIVE -->
+<section id="what-to-give" class="section">
+  <div class="page-content">
+    <h2 class="section-title">Что можно передать</h2>
+    <div class="what-cards">
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-0" src="images/what1-things.png" alt="Вещи общего пользования" />
+        </div>
+        <div class="what-card-title">Вещи общего пользования</div>
+        <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем&nbsp;состоянии</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-1" src="images/what2-quality.png" alt="Качественные вещи" />
+        </div>
+        <div class="what-card-title">Качественные вещи</div>
+        <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего&nbsp;использования</div>
+      </div>
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-2" src="images/what3-recycle.png" alt="Если вещь не подходит" />
+        </div>
+        <div class="what-card-title">Если вещь не подходит</div>
+        <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на&nbsp;переработку</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BANNER -->
+<section class="section">
+  <div class="page-content">
+    <div class="info-banner">
+      <div class="info-banner-text">
+        <div class="info-banner-title">Объявление не будет видно в поиске</div>
+        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
+        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
+      </div>
+      <div class="info-banner-deco">
+        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFTER POSTING -->
+<section class="section">
+  <div class="page-content">
+    <h2 class="section-title">Что происходит после<br>размещения объявления</h2>
+    <div class="after-cards">
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img loading="lazy" decoding="async" class="after-card-icon-1" src="images/after1-icon.png" alt="" />
+        </div>
+        <div class="after-card-title">Организации могут ответить не сразу</div>
+        <div class="after-card-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и&nbsp;откликнулись</div>
+      </div>
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img loading="lazy" decoding="async" class="after-card-icon-2" src="images/after2-icon.png" alt="" />
+        </div>
+        <div class="after-card-title">Если вам пишут не только фонды</div>
+        <div class="after-card-desc">Вы сами решаете, кому передать вещь. Выбирайте того, кому доверяете и кому она принесёт больше&nbsp;пользы</div>
+      </div>
+      <div class="after-card">
+        <div class="after-card-icon-wrap">
+          <img loading="lazy" decoding="async" class="after-card-icon-3" src="images/after3-icon.png" alt="" />
+        </div>
+        <div class="after-card-title">Если пока никто<br>не откликнулся</div>
+        <div class="after-card-desc">Такое тоже бывает. В этом случае вы всегда можете передать вещь другим удобным для&nbsp;вас&nbsp;способом</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary" style="margin-top:8px;">Найти пункт</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- CAMPAIGNS -->
 <section class="section" id="campaigns-section">

@@ -1544,12 +1544,12 @@
       <!-- Баннер 1: Передать фондам -->
       <div class="htg-banner">
         <div class="htg-text">
-          <div class="htg-title">Создать объявление</div>
+          <div class="htg-title">Создать благотворительное<br>объявление</div>
           <div class="htg-desc">Разместите объявление с вещами для передачи.<br>Его увидят те, кому они могут пригодиться.</div>
         </div>
         <div class="htg-btns">
           <span class="btn-primary-sm" style="cursor:default; pointer-events:none;">Создать объявление</span>
-          <a href="#how-it-works" class="btn-secondary">Как это работает</a>
+          <button class="btn-secondary" onclick="openHowItWorksPopup()">Как это работает</button>
         </div>
         <div class="htg-img-wrap">
           <img loading="lazy" decoding="async" src="images/photo new 1.png" alt="" />
@@ -1559,7 +1559,7 @@
       <!-- Баннер 2: Отнести в пункт приёма -->
       <div class="htg-banner">
         <div class="htg-text">
-          <div class="htg-title" style="white-space:nowrap;">Отнести в пункт приёма вещей</div>
+          <div class="htg-title">Отнести в пункт приёма<br>вещей</div>
           <div class="htg-desc">Отнесите вещь в ближайший пункт — её передадут нуждающимся</div>
         </div>
         <div class="htg-btns">
@@ -1717,61 +1717,6 @@
   </div>
 </div>
 
-<!-- HOW IT WORKS -->
-<section id="how-it-works" class="section">
-  <div class="page-content">
-    <h2 class="section-title">Как это работает</h2>
-    <div class="cards-grid-3">
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step1-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23e3f7ff%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>📋</text></svg>'" />
-        <div class="step-title">Выберите способ передачи</div>
-        <div class="step-desc">Через объявление #яПомогаю, пункт приёма или вывоз вещей</div>
-      </div>
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step2-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23c8e6c9%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>🛒</text></svg>'" />
-        <div class="step-title">Передайте вещи</div>
-        <div class="step-desc">Разместите объявление или передайте вещи через сервис</div>
-      </div>
-      <div class="step-card">
-        <img loading="lazy" decoding="async" class="step-icon" src="images/step3-icon.png" alt="" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 86 86%22><rect width=%2286%22 height=%2286%22 rx=%2216%22 fill=%22%23f4eefe%22/><text x=%2243%22 y=%2256%22 font-size=%2240%22 text-anchor=%22middle%22>✅</text></svg>'" />
-        <div class="step-title">Мы найдём получателя</div>
-        <div class="step-desc">Вещи передаются людям или благотворительным организациям</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT TO GIVE -->
-<section id="what-to-give" class="section">
-  <div class="page-content">
-    <h2 class="section-title">Что можно передать</h2>
-    <div class="what-cards">
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-0" src="images/what1-things.png" alt="Вещи общего пользования" />
-        </div>
-        <div class="what-card-title">Вещи общего пользования</div>
-        <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем&nbsp;состоянии</div>
-      </div>
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-1" src="images/what2-quality.png" alt="Качественные вещи" />
-        </div>
-        <div class="what-card-title">Качественные вещи</div>
-        <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего&nbsp;использования</div>
-      </div>
-      <div class="what-card">
-        <div class="what-card-img">
-          <img loading="lazy" decoding="async" id="what-img-2" src="images/what3-recycle.png" alt="Если вещь не подходит" />
-        </div>
-        <div class="what-card-title">Если вещь не подходит</div>
-        <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на&nbsp;переработку</div>
-        <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CAMPAIGNS -->
 <section class="section" id="campaigns-section">
   <div class="page-content">
@@ -1822,47 +1767,33 @@
   </div>
 </section>
 
-<!-- AFTER POSTING -->
-<section class="section">
+<!-- WHAT TO GIVE -->
+<section id="what-to-give" class="section">
   <div class="page-content">
-    <h2 class="section-title">Что происходит после<br>размещения объявления</h2>
-    <div class="after-cards-new">
-      <div class="after-card-new">
-        <div class="after-card-new-text">
-          <div class="after-card-new-title">Организации могут ответить не сразу</div>
-          <div class="after-card-new-desc">Иногда требуется немного времени, чтобы вашу вещь увидели и откликнулись</div>
+    <h2 class="section-title">Что можно передать</h2>
+    <div class="what-cards">
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-0" src="images/what1-things.png" alt="Вещи общего пользования" />
         </div>
-        <div class="after-card-new-img">
-          <img loading="lazy" decoding="async" src="images/banner new 1.png" alt="" />
-        </div>
+        <div class="what-card-title">Вещи общего пользования</div>
+        <div class="what-card-desc">Одежду, обувь, книги, игрушки, технику и другие вещи в хорошем&nbsp;состоянии</div>
       </div>
-      <div class="after-card-new">
-        <div class="after-card-new-text">
-          <div class="after-card-new-title">Если пока никто не откликнулся</div>
-          <div class="after-card-new-desc">В этом случае вы можете передать вещь в пункт приёма или на переработку</div>
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-1" src="images/what2-quality.png" alt="Качественные вещи" />
         </div>
-        <div class="after-card-new-btns">
-          <a href="https://www.avito.ru/avito-care/recyclemap?from=/avito-care/donate-things" target="_blank" class="btn-secondary">Найти пункт</a>
-        </div>
-        <div class="after-card-new-img">
-          <img loading="lazy" decoding="async" src="images/banner new 2.png" alt="" />
-        </div>
+        <div class="what-card-title">Качественные вещи</div>
+        <div class="what-card-desc">Вещи должны быть чистыми и пригодными для дальнейшего&nbsp;использования</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?filter=5" target="_blank" class="btn-secondary">Открыть карту</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- INFO BANNER -->
-<section class="section">
-  <div class="page-content">
-    <div class="info-banner" style="background:#f5f5f5;">
-      <div class="info-banner-text">
-        <div class="info-banner-title">Объявление не будет видно в поиске</div>
-        <div class="info-banner-desc">Объявления с хештегом #яПомогаю не показываются обычным покупателям. Так мы защищаем помощь от нецелевых заказов и перекупщиков. Ваше объявление увидят только организации и пользователи, для которых предназначена&nbsp;помощь.</div>
-        <a href="#" class="btn-primary-sm info-banner-btn">Создать объявление</a>
-      </div>
-      <div class="info-banner-deco">
-        <img loading="lazy" decoding="async" src="images/info-banner-deco.png" alt="" />
+      <div class="what-card">
+        <div class="what-card-img">
+          <img loading="lazy" decoding="async" id="what-img-2" src="images/what3-recycle.png" alt="Если вещь не подходит" />
+        </div>
+        <div class="what-card-title">Если вещь не подходит</div>
+        <div class="what-card-desc">Если вещь не подходит для повторного использования, её можно передать на&nbsp;переработку</div>
+        <a href="https://www.avito.ru/avito-care/recyclemap?&filter=3%2C1%2C12%2C2%2C13%2C8%2C11%2C7%2C10%2C4%2C9%2C6" target="_blank" class="btn-secondary">Найти пункт</a>
       </div>
     </div>
   </div>
@@ -2103,5 +2034,210 @@
     });
   });
 </script>
+<!-- HOW IT WORKS POPUP -->
+<div class="hiw-backdrop" id="hiw-backdrop" onclick="closeHowItWorksPopup()"></div>
+<div class="hiw-popup" id="hiw-popup">
+  <button class="hiw-close" onclick="closeHowItWorksPopup()">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 5L5 15M5 5l10 10" stroke="#141414" stroke-width="2" stroke-linecap="round"/></svg>
+  </button>
+  <div class="hiw-body">
+    <h2 class="hiw-title">Как работает размещение<br>благотворительного объявления</h2>
+    <div class="hiw-steps">
+
+      <div class="hiw-step">
+        <img class="hiw-icon" src="images/step1-icon.png" alt="" />
+        <div class="hiw-step-content">
+          <div class="hiw-step-title">Создайте и разместите объявление</div>
+          <div class="hiw-step-desc">Выберите категорию вещей для передачи на благотворительность и подключите Авито Доставку</div>
+          <div style="margin-top:16px;">
+            <span class="btn-primary-sm" style="cursor:default; pointer-events:none;">Создать объявление</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <img class="hiw-icon" src="images/step4-icon.png" alt="" />
+        <div class="hiw-step-content">
+          <div class="hiw-step-title">Объявление не будет видно в поиске</div>
+          <div class="hiw-step-desc">Благотворительные объявления не показываются обычным покупателям. Так мы защищаем помощь от перекупщиков. Ваше объявление увидят только организации и фонды.</div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <img class="hiw-icon" src="images/step5-icon.png" alt="" />
+        <div class="hiw-step-content">
+          <div class="hiw-step-title">Дождитесь ответа от фондов</div>
+          <div class="hiw-step-desc">Подождите пока фонды увидят ваши вещи и напишут вам на платформе Авито. Иногда требуется немного времени, чтобы вашу вещь увидели и откликнулись</div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <img class="hiw-icon" src="images/step3-icon.png" alt="" />
+        <div class="hiw-step-content">
+          <div class="hiw-step-title">Отправьте вещи Авито Доставкой</div>
+          <div class="hiw-step-desc">После того, как вы договоритесь с фондом о сделке, отправьте вещи Авито Доставкой. Вещи пойдут фондам напрямую.</div>
+        </div>
+      </div>
+
+      <div class="hiw-step">
+        <img class="hiw-icon" src="images/step6-icon.png" alt="" />
+        <div class="hiw-step-content">
+          <div class="hiw-step-title">Если никто не откликнулся</div>
+          <div class="hiw-step-desc">В этом случае вы можете передать вещь в пункт приёма или на переработку.</div>
+          <div style="margin-top:16px;">
+            <a href="https://www.avito.ru/avito-care/recyclemap" target="_blank" class="btn-secondary">Открыть карту</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top-btn" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">
+  <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M11 6.5L6 1.5L1 6.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<style>
+  /* HOW IT WORKS POPUP */
+  .hiw-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+  }
+  .hiw-backdrop.visible { display: block; }
+  .hiw-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 667px;
+    max-width: calc(100vw - 32px);
+    max-height: 80vh;
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 24px rgba(0,0,0,0.12);
+    z-index: 1001;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  .hiw-popup.visible { display: flex; }
+  .hiw-close {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0;
+  }
+  .hiw-body {
+    padding: 36px 40px 44px;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .hiw-title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 36px;
+    color: #000;
+    margin-bottom: 22px;
+    padding-right: 24px;
+  }
+  .hiw-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hiw-step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .hiw-icon {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .hiw-step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    padding-right: 8px;
+  }
+  .hiw-step-title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 28px;
+    color: #000;
+  }
+  .hiw-step-desc {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #000;
+  }
+
+  /* SCROLL TO TOP */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 24px rgba(0,0,0,0.14);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .scroll-top-btn.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+</style>
+
+<script>
+  function openHowItWorksPopup() {
+    document.getElementById('hiw-backdrop').classList.add('visible');
+    document.getElementById('hiw-popup').classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeHowItWorksPopup() {
+    document.getElementById('hiw-backdrop').classList.remove('visible');
+    document.getElementById('hiw-popup').classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeHowItWorksPopup();
+  });
+
+  // Scroll to top button
+  window.addEventListener('scroll', function() {
+    var btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 100) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  });
+</script>
+
 </body>
 </html>
